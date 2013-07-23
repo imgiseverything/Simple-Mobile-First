@@ -47,7 +47,7 @@ function theme_setup() {
 	
 
 
-	// Add a custom post type
+	// Add a custom post type - http://wordpress.org/plugins/img-custom-post-types/
 	if (class_exists('IMGCustomPostTypes') === true ) {
 	
 		// Example custom post type
@@ -355,17 +355,14 @@ function nocruft_posted_in() {
 endif;
 
 
-
-
-
 /**
-*	extend_body_class
-* 	Add page slug to the <body class=""> values for  mo' better CSS styling
-*	If the URL is /directory/sub-directory/page then add:
-*	directory, subdirectory and page values to the classes list
-*	@param	array list of current classes
-*	@return	array list of current classes + new ones
-*/
+ *	extend_body_class
+ * 	Add page slug to the <body class=""> values for  mo' better CSS styling
+ *	If the URL is /directory/sub-directory/page then add:
+ *	directory, subdirectory and page values to the classes list
+ *	@param	array list of current classes
+ *	@return	array list of current classes + new ones
+ */
 add_filter( 'body_class', 'extend_body_class' );
 function extend_body_class( $classes ) {
 
@@ -374,11 +371,10 @@ function extend_body_class( $classes ) {
 	
 	foreach($url_parts as $key){
 		
-		if(!is_numeric($key)){
-			$classes[] = $key;
+		if(!is_numeric($key) && strlen($key) > 0){
+			$classes[] = trim($key);
 		}
 	}
-	
 	
 	// Home page yo
 	if($url === '/'){
