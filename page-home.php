@@ -4,6 +4,10 @@
  *
  * @package WordPress
  */
+ 
+/*
+Template name: Home
+*/
 
 get_header(); ?>
 

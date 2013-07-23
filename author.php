@@ -28,7 +28,7 @@ get_header(); ?>
 if ( get_the_author_meta( 'description' ) ) : ?>
 	<div id="entry-author-info">
 		<div id="author-avatar">
-			<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'user_email' )); ?>
 		</div>
 		<div id="author-description">
 			<h2><?php printf( 'About %s', get_the_author() ); ?></h2>
