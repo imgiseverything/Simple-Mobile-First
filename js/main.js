@@ -11,59 +11,50 @@
 	"use strict";
 
 	var WordPressTheme = {
-	
-	
+
 		config: {
-			
+			// Not used
 		},
 		
-		// Functions to run onload
+		// Functions to run onload - note we don't need $(document).ready(); because we include this script before </body>
 		onReady: function(){
 			
 			var self = this;
-			
-			
+
 			self.jsHide();
 			
 			self.mobileMenu();
 			
 		},
 		
+		// Hide elements hidden with CSS to make it easier to show/hide them with JavaScript (if needs be)
 		jsHide: function(){
 		
 			$('.js-hidden').hide().removeClass('js-hidden');
 			
 		},
 		
-		// 
+		// Allow a menu to be shown/hidden with the click of a button
 		mobileMenu: function(){
 			
-			var self = this,
-				$nav = $('.site-nav'),
+			var $nav = $('.site-nav'),
 				$button = $('.site-nav-button');
 				
 			if($nav.length === 0 || $button.length === 0){
 				return;
-			}
-				
+			}	
 				
 			$button.click(function(e){
 				e.preventDefault();
+				// Note: we're just gonna toggle classes with JS and we'll use CSS to display/animate stuff
 				$(this).toggleClass('active');
 				$nav.toggleClass('active');
 			});
 			
-			
 		}
-	
 
 	};
 	
 	WordPressTheme.onReady();
 
 }(jQuery));
-
-
-
-// ConvertEntities - from l10n.js
-function convertEntities(b){var d,a;d=function(c){if(/&[^;]+;/.test(c)){var f=document.createElement("div");f.innerHTML=c;return !f.firstChild?c:f.firstChild.nodeValue}return c};if(typeof b==="string"){return d(b)}else{if(typeof b==="object"){for(a in b){if(typeof b[a]==="string"){b[a]=d(b[a])}}}}return b};

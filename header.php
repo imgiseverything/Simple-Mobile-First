@@ -3,7 +3,7 @@
  * The Header for our theme.
  */
  
-$last_updated = '04072013';
+$last_updated = '23072013'; // <- cache buster. Change this after updating CSS or JavaScript files
  
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -20,21 +20,19 @@ $last_updated = '04072013';
 		<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>?<?php echo $last_updated; ?>">
 		<!--[if lt IE 9]> <script src="<?php echo get_template_directory_uri(); ?>/js/respond.js"></script> <![endif]-->
 <?php
-		/* We add some JavaScript to pages with the comment form
-		 * to support sites with threaded comments (when in use).
-		 */
-		/*if ( is_singular() && get_option( 'thread_comments' ) ){
-			wp_enqueue_script( 'comment-reply' );
-		}*/
+		
+		
+		// JavaScript files - load at the bottoms where possible
+		$load_at_bottom = true;
 		
 		// jQuery
 		wp_enqueue_script('jquery');
+		
 		// Site specific scripts
-		wp_enqueue_script('global', get_template_directory_uri() . '/js/main.js', array('jquery'), $last_updated, true);
+		wp_enqueue_script('global', get_template_directory_uri() . '/js/main.js', array('jquery'), $last_updated, $load_at_bottom);
 		
-		// Get rid of this WP JavaScript file - its one function is now in script.js
-		wp_deregister_script('l10n');
-		
+		// End JavaScript files
+
 		
 		wp_head();
 	
