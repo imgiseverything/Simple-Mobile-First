@@ -17,6 +17,7 @@ $last_updated = '23072013'; // <- cache buster. Change this after updating CSS o
 		<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');</script>
 		<!--[if lt IE 9]> <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>?<?php echo $last_updated; ?>">
 		<!--[if lt IE 9]> <script src="<?php echo get_template_directory_uri(); ?>/js/respond.js"></script> <![endif]-->
 <?php
