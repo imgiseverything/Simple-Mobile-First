@@ -1,0 +1,59 @@
+/*
+Theme Name: Simple Mobile First
+Theme URI: 
+Description: A bare-bones mobile-first WordPress theme
+Author: Phil Thompson
+Author URI: http://imgiseverything.co.uk/
+*/
+
+/**
+ *
+ 	----------
+	CONTENTS
+	----------
+
+	Mobile first
+		
+		0 Misc
+			Webfonts
+		1 Resets/Normalise
+			Body
+			Links
+			Headings
+			Block level elements: p, ul, ol, dl, etc
+			Forms (default)
+		2 Helper classes / Common modules
+		3 Layout/structure (e.g. header, footer, etc)
+		4 Individual sections/pages - use a class on body tag for this e.g. body.home .parent .child{ etc: etc; }
+		5 Mobile / RWD helper classes (need to be at the end but before any media-queries for mobile rules but then at the start of media queries for tablet, desktop etc)	
+	
+	Tablet size 768px +
+		
+	Desktop size 1024px +
+		
+ 
+ */
+
+
+
+
+/**
+ * 0 Misc
+ */
+ 
+@import "misc-fonts";
+@import "misc-reset";
+@import "misc-helpers-forms";
+
+/**
+ *	2 Helper classes / Common modules
+ */
+@import "misc-helpers";
+
+/**
+ *	3 Layout
+ */
+@import "site-header";
+@import "site-nav";
+@import "site-content";
+@import "site-footer";

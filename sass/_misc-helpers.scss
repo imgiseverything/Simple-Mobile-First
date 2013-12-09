@@ -1,0 +1,346 @@
+
+/**
+ * Layout helper classes
+	Image replacement classes / show/hide classes
+	WordPress specific classes
+		Image alignment
+		Captions
+		Post classes
+		Post navigation
+		Pagenavi plugin styles (use the WP-Pagenavi plugin it's ace)
+	Search form
+	List classes
+	Social icons (uses symoblset.com - get a licence - it's really cheap. Be nice, do it)
+ */
+.group, 
+.field{
+	clear: both;
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+.field{
+	margin: 0 0 20px;
+}
+
+.inner{
+	margin: 0 auto;
+	position: relative;
+	width: 98%;
+}
+
+
+@media screen and (min-width: 768px) {
+
+	.inner{
+		width: 690px;
+	}	
+	
+}
+
+@media screen and (min-width: 1024px) {
+
+	.inner{
+		width: 1020px;
+	}	
+	
+}
+
+.column{
+	float: left;
+	position: relative;
+	width: 50%;
+}
+
+.decoration{
+	display: block;
+	position: absolute;
+}
+
+/* Clearfix */
+.clearfix:before, 
+.clearfix:after { 
+	content: "\0020"; 
+	display: block; 
+	height: 0; 
+	overflow: hidden; 
+}
+
+.clearfix:after { clear: both; }
+
+.clearfix { zoom: 1; }  
+
+/**
+ * Image replacement classes / show/hide classes
+ */
+.ir { 
+	background-color: transparent; 
+	background-repeat: no-repeat; 
+	border: 0; 
+	direction: ltr; 
+	display: block; 
+	overflow: hidden; 
+	text-align: left; 
+	text-indent: -999em; 
+	*line-height: 0; 
+}
+
+.ir br { 
+	display: none; 
+}    
+
+.hidden,
+.js-hidden { 
+	display: none; 
+	visibility: hidden; 
+} 
+
+
+/* Hidden but visible to screenreaders */
+.visuallyhidden { 
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; 
+	margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px; 
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus { 
+	clip: auto; 
+	height: auto; 
+	margin: 0; 
+	overflow: visible; 
+	position: static; 
+	width: auto; 
+}
+
+.invisible { visibility: hidden; }
+
+
+/**
+ * WordPress specific classes 
+ */
+
+
+/* Image alignment */
+.alignleft{
+	display: block;
+	float: left;
+	margin: 20px 20px 20px 0;
+}
+
+.alignright{
+	display: block;
+	float: right;
+	margin: 20px 0 20px 20px;
+	
+}
+
+.aligncenter{
+	display: block;
+	float: none;
+	margin: 20px auto;
+}
+
+
+/* Captions */
+.wp-caption{
+	background: #F5F5F5;
+	padding: 10px;
+}
+	
+	.wp-caption img{
+		display: block;
+		margin: 0 auto;
+	}
+
+.wp-caption-text{
+	font-size: 90%;
+	padding: 10px 0 0;
+	text-align: center;
+}
+
+/* Post classes */
+.entry-meta,
+.entry-utility{
+	color: #666;
+	font-size: 90%;
+	padding: 0; /* Set left and right values the same as p tag's */
+}
+
+.entry-utility{
+	margin-top: 10px;
+}
+
+.entry-title{
+	font-size: 20px;
+}
+
+/* Post navigation: next/previous posts/pages */
+div.navigation{
+	border-top: 1px dotted #000;
+	clear: both;
+	margin: 20px 0 0;
+}
+
+	div.navigation div{
+		width: 50%;
+	}
+	
+	div.navigation a{
+		display: block;
+		padding: 10px;
+	}
+
+	div.navigation a span{
+		color: #666;
+	}
+	
+		div.navigation .nav-next{
+			float: right;
+			text-align: right;
+		}
+
+/* Pagenavi plugin styles */	
+.wp-pagenavi{
+	border-top: 1px dotted #000;
+	clear: both;
+	float: left;
+	padding: 10px 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+	
+	.wp-pagenavi a,
+	.wp-pagenavi span{
+		display: inline-block;
+		margin-right: .5em;
+		padding: 1px 2px;
+	}
+	
+	.wp-pagenavi .current{
+		background: #f5f5f5;
+		color: #000;
+	}
+	
+	.wp-pagenavi a:hover{
+		color: #000;
+	}
+	
+	
+/* Search form */
+form.search{
+	padding: 0;
+}
+
+	form.search fieldset{
+		padding: 10px;
+	}
+		
+	
+		form.search input{
+			margin: 0 0 10px;
+		}
+		
+		form.search button{
+			width: 100%;
+		}
+	
+	
+/* Lists */
+.block-list{
+
+}
+
+	.block-list li{
+		list-style: none;
+		margin-left: 0;
+	}
+
+.grid-list{
+	margin-left: -20px;
+}
+
+	.grid-list li{
+		float: left;
+		list-style: none;
+		margin: 0 0 20px 20px;
+	}
+
+.media-list{
+	
+}
+
+	.media-list li{
+		
+	}
+	
+		.media-list .media{
+			
+		}
+		
+			.media-list .media img{
+				display: block;
+				margin: 0 auto;
+			}
+		
+		.media-list .supporting{
+			
+		}
+
+/**
+ * Social icons
+ */		
+.social-list{
+	
+}
+
+.social-list li{
+	display: inline-block;
+	list-style: none;
+	margin-left: 10px;
+}
+
+
+.social-icon{
+	color: blue;
+	display: block;
+	font-family: "SSSocialRegular";
+	height: 20px;
+	overflow: hidden;
+	text-decoration: none;
+	width: 20px;
+}
+
+.social-icon-email{
+	
+}
+
+.social-icon-facebook{
+	
+}
+
+.social-icon-gogoleplus{
+	
+}
+
+.social-icon-twitter{
+	
+}
+
+
+/* Sidebar menu */
+
+.sidebar .nav{
+	
+}
+
+.sidebar .nav li ul{
+	padding: 5px 10px;
+}

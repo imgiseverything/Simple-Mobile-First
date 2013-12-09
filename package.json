@@ -1,0 +1,11 @@
+{
+    "name" : "simple-mobile-first",
+    "version" : "0.1.0",
+    "author" : "Phil Thompson",
+    "private" : true,
+
+    "devDependencies" : {
+        "grunt" :                   "~0.4.0",
+        "matchdep" :                "~0.3.0"
+    } 
+}

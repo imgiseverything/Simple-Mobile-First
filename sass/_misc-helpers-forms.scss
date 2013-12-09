@@ -1,0 +1,124 @@
+/* Forms */
+form{
+	background: #f5f5f5;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset{
+	padding: 10px;
+}
+
+legend{
+
+}
+
+label{
+	clear: both;
+	color: #000;
+	display: block;
+}
+
+	label[for]{	
+		cursor: pointer;
+	}
+	
+	
+	label + input[type="checkbox"],
+	label + input[type="radio"],
+	input[type="checkbox"] + label,
+	input[type="radio"] + label{
+		display: inline-block;
+	}
+
+input, select, textarea{
+	border: 1px solid #dbdbdb;
+	clear: both;
+	color: #666;
+	display: block;
+	font: normal 16px sans-serif; /* 16px font-size = no-zoom on :focus on iOS */
+	padding: 10px;
+	max-width: 100%;
+	width: 100%;
+}
+
+	input:focus, select:focus, textarea:focus{
+		color: #222;
+	}
+	
+	input[type="hidden"]{
+		visibility: hidden;
+	}
+	
+	input[type="search"]{
+		-webkit-appearance: none;
+	}
+	
+	input[type="checkbox"],
+	input[type="radio"]{
+		background: transparent;
+		border: none;
+		display: inline-block;
+		padding: 0;
+		width: auto;
+	}
+	
+select{
+	
+}
+
+option{
+	
+}
+
+textarea{
+	resize: vertical;
+}
+
+button, 
+input[type="button"], 
+input[type="submit"], 
+.button{
+	background: #bbb;
+	border: 1px solid #bbb;
+	color: #000;
+	clear: both;
+	cursor: pointer;
+	font: normal 100% sans-serif;
+	padding: 10px;
+	text-align: center;
+	width: auto;
+}
+
+	button:hover, 
+	input[type="button"]:hover, 
+	input[type="submit"]:hover, 
+	.button:hover{
+		background: #333;
+		color: #fff;
+	}
+	
+	button:active, 
+	input[type="button"]:active, 
+	input[type="submit"]:active, 
+	.button:active{
+		
+	}
+	
+	
+/* Tablet */
+@media screen and (min-width: 768px) {
+	
+	/* Search form */
+	form.search .field{
+		display: inline-block;
+		margin: 0 5px 0 0;
+		width: 60%;
+	}
+	
+	form.search button{
+		display: inline-block;
+		width: 35%;
+	}
+	
+}

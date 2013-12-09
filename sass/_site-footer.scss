@@ -1,0 +1,98 @@
+/* Global site footer */
+.site-footer{
+	border-top: 1px dotted #000;
+	font-size: 12px;
+	margin: 40px 0 0;
+	padding: 20px 0;
+	text-align: center;
+}
+
+	.site-footer .footer-section{
+		
+	}
+	
+	.site-footer small{
+		display: block;
+	}
+	
+	.site-footer ul{
+		margin: 0;
+		padding: 0;
+	}
+	
+	.site-footer li{
+		display: inline-block;
+		margin: 0 1em 0 0;
+		padding: 0;
+	}
+	
+	.site-footer li a{
+		color: #444;
+		text-decoration: none;
+	}
+	
+	.site-footer li a:visited{
+		color: #000;
+	}
+	
+	.site-footer li a:hover{
+		color: #999;
+	}
+	
+	.site-footer .social-list{
+		margin-top: 1em;
+	}
+	
+	/* Footer child menu - always hide (too complicated otherwise) */
+	.site-footer li ul{
+		display: none;
+	}
+
+
+
+/* Mobile */
+@media screen and (min-width: 568px) {
+
+}
+
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+	.site-footer{
+		text-align: left;
+	}
+	
+	
+	.site-footer .footer-section{
+		float: right;
+		text-align: right;
+		width: 50%;
+	}
+	
+	.site-footer .footer-section + .footer-section{
+		float: left;
+		text-align: left;
+	}
+	
+	.site-footer .menu,
+	.site-footer ul{
+		display: inline-block;
+		vertical-align: top;
+	}
+	
+	.site-footer .social-list{
+		margin-top: 0;
+	}
+	
+	.site-footer li:last-child{
+		margin-right: 0;
+	}
+
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+
+
+
+}

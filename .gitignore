@@ -41,3 +41,5 @@ Thumbs.db
 # Fonts that require a licence #
 ######################
 fonts/ss-social/*
+.sass-cache/*
+node_modules/*

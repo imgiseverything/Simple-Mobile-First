@@ -1,0 +1,42 @@
+/**
+ *	5 Mobile/RWD helper classes
+ */
+
+@media screen and (min-device-width: 320px)  and (max-device-width: 480px) {
+	.mobile-hidden,
+	.tablet-only,
+	.desktop-only{
+		display: none !important;
+	}
+}
+
+@media screen and (min-device-width: 320px)  and (max-device-width: 568px) {
+	.mobile-hidden,
+	.tablet-only,
+	.desktop-only{
+		display: none !important;
+	}
+}
+
+
+@media screen and (min-device-width: 768px)  and (max-device-width: 1024px) {
+	.tablet-hidden,
+	.mobile-hidden,
+	.desktop-only{
+		display: none !important;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.desktop-hidden{
+		display: none !important;
+	}	
+}
+
+@media screen and (min-width: 1025px) {
+	.mobile-only,
+	.tablet-only{
+		display: none !important;
+	}
+	
+}

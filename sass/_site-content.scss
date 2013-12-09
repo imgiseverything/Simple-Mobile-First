@@ -1,0 +1,56 @@
+/* Global site content */
+.site-content{
+	
+}
+
+.primary, .sidebar, .secondary{
+	border-top: 1px dotted #000;
+	clear: both;
+	float: left;
+	margin: 40px 0 0;
+	padding: 20px 0;
+	position: relative;
+	width: 100%;
+}
+
+.primary{
+	
+}
+
+.sidebar, .secondary{
+}
+
+
+
+/* Mobile */
+@media screen and (min-width: 568px) {
+
+}
+
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+	.primary,
+	.secondary, .sidebar{
+		border-top: none;
+		clear: none;
+		padding-top: 0;
+	}
+	
+	.primary{
+		width: 65%;
+	}
+	
+	.secondary, .sidebar{
+		float: right;
+		width: 30%;
+	}
+
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+
+
+
+}
