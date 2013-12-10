@@ -18,10 +18,17 @@
 	}
 }
 
+@media screen and (min-width: 569px){
+	.mobile-only{
+		display: none !important;
+	}
+}
+
 
 @media screen and (min-device-width: 768px)  and (max-device-width: 1024px) {
 	.tablet-hidden,
 	.mobile-hidden,
+	.mobile-only,
 	.desktop-only{
 		display: none !important;
 	}

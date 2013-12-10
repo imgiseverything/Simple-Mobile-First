@@ -6,18 +6,17 @@
 .site-nav{
 	height: 0;
 	overflow: hidden;
-}
 
-	.site-nav.active{
+	&.active{
 		height: auto;
 	}
-	
-	.site-nav ul{
+
+	ul{
 		margin: 0;
 		padding: 0;
 	}
 
-	.site-nav li{
+	li{
 		border-top: 1px solid #999;
 		display: block;
 		list-style: none;
@@ -26,41 +25,52 @@
 		position: relative;
 	}
 	
-		.site-nav a{
-			background: #dbdbdb;
-			color: #333;
-			display: block;
-			padding: 10px;
-			text-decoration: none;
-		}
+	a{
+		background: #dbdbdb;
+		color: #333;
+		display: block;
+		padding: 10px;
+		text-decoration: none;
 		
-		.site-nav a:hover{
+		&:hover{
 			background: #f5f5f5;
 		}
 		
-		.site-nav ul > li.current_page_item a,
-		.site-nav ul > li.current_page_parent a,
-		.site-nav ul > li.current_page_ancestor a,
-		.site-nav ul > li.current_menu_item a,
-		.site-nav ul > li.current_menu_parent a,
-		.site-nav ul > li.current_menu_ancestor a{
-			background: #999;
-			color: #fff;
-		}
-		
-			.site-nav ul ul{
-				font-size: 90%;
-			}
-			
-				.site-nav ul ul li{
-					border-top: 1px solid #dbdbdb;
-					width: 100%;
-				}
+	}
 
-			.site-nav ul ul a:hover{
-				background: #f5f5f5;
-				color: #000;
-			}	
+}		
+
+/* Highlight active page */
+.site-nav ul > li.current_page_item > a,
+.site-nav ul > li.current_menu_item > a{
+	background: #888;
+	color: #fff;
+}
+
+
+/* Highlight active parent */
+.site-nav ul > li.current_page_parent > a,
+.site-nav ul > li.current_page_ancestor > a,
+.site-nav ul > li.current_menu_parent > a,
+.site-nav ul > li.current_menu_ancestor > a{
+	background: #aaa;
+	color: #fff;
+}
+
+/* Sub-nav */
+.site-nav ul ul{
+	font-size: 90%;
+	
+	li{
+		border-top: 1px solid #dbdbdb;
+		width: 100%;
+	}
+
+	a:hover{
+		background: #f5f5f5;
+		color: #000;
+	}	
+}
 
 
 /* Mobile */
@@ -70,18 +80,18 @@
 
 
 /* Tablet */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 569px) {
 
-	/* On desktop it's horizontal with children as drop downs (using CSS) */
+	/* On desktop/tablet the nav is horizontal with children as drop downs (using CSS) */
 	.site-nav{
 		height: auto !important;
 		overflow: visible;
-	}
-	
-	.site-nav li{
-		border-top: none;
-		display: inline-block;
-		margin: 0 2px 0 0;
+		
+		li{
+			border-top: none;
+			display: inline-block;
+			margin: 0 2px 0 0;
+		}
 	}
 	
 	/* Show children on hover */
@@ -99,11 +109,11 @@
 		position: absolute;
 		top: auto;
 		z-index: 5;
-		width: 300px;
+		width: 300px; /* magic number <- make ems? or rems? */
 	}
 	
 	.site-nav ul.children li ul.children{
-		left: 300px;
+		left: 300px; /* magic number <- make ems? or rems? */
 		top: 0;
 	}
 				

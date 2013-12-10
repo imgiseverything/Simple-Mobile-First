@@ -12,17 +12,18 @@
 		max-width: 100%;
 		padding: 0;
 		width: 300px;
-	}
-	
-		.site-header .logo a{
+		
+		a{
 			color: inherit;
 			display: block;
 			text-decoration: none;
 		}
+	
+	}
 
 
 
-/* Mobile */
+/* Mobile (landscape) */
 @media screen and (min-width: 568px) {
 
 }

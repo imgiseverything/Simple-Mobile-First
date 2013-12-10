@@ -25,7 +25,7 @@ Author URI: http://imgiseverything.co.uk/
 		2 Helper classes / Common modules
 		3 Layout/structure (e.g. header, footer, etc)
 		4 Individual sections/pages - use a class on body tag for this e.g. body.home .parent .child{ etc: etc; }
-		5 Mobile / RWD helper classes (need to be at the end but before any media-queries for mobile rules but then at the start of media queries for tablet, desktop etc)	
+		5 Mobile / RWD helper classes 
 	
 	Tablet size 768px +
 		
@@ -57,3 +57,14 @@ Author URI: http://imgiseverything.co.uk/
 @import "site-nav";
 @import "site-content";
 @import "site-footer";
+
+
+/**
+ *	4 Individual pages/sections
+ */
+ 
+/**
+ *	5 Mobile / RWD helper classes
+ */
+@import "misc-helpers-responsive"; 
+

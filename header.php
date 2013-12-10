@@ -34,7 +34,6 @@ $last_updated = '23072013'; // <- cache buster. Change this after updating CSS o
 		
 		// End JavaScript files
 
-		
 		wp_head();
 	
 ?>

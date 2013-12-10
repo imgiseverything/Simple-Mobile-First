@@ -24,7 +24,7 @@ Author URI: http://imgiseverything.co.uk/
 		2 Helper classes / Common modules
 		3 Layout/structure (e.g. header, footer, etc)
 		4 Individual sections/pages - use a class on body tag for this e.g. body.home .parent .child{ etc: etc; }
-		5 Mobile / RWD helper classes (need to be at the end but before any media-queries for mobile rules but then at the start of media queries for tablet, desktop etc)	
+		5 Mobile / RWD helper classes 
 	
 	Tablet size 768px +
 		
@@ -218,16 +218,6 @@ input[type="submit"]:hover,
   color: #fff; }
 
 /* Tablet */
-@media screen and (min-width: 768px) {
-  /* Search form */
-  form.search .field {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    width: 60%; }
-
-  form.search button {
-    display: inline-block;
-    width: 35%; } }
 /**
  *	2 Helper classes / Common modules
  */
@@ -436,6 +426,17 @@ form.search input {
 form.search button {
   width: 100%; }
 
+/* Tablet */
+@media screen and (min-width: 768px) {
+  /* Search form */
+  form.search .field {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    width: 60%; }
+
+  form.search button {
+    display: inline-block;
+    width: 35%; } }
 /* Lists */
 .block-list li {
   list-style: none;
@@ -486,13 +487,12 @@ form.search button {
   max-width: 100%;
   padding: 0;
   width: 300px; }
+  .site-header .logo a {
+    color: inherit;
+    display: block;
+    text-decoration: none; }
 
-.site-header .logo a {
-  color: inherit;
-  display: block;
-  text-decoration: none; }
-
-/* Mobile */
+/* Mobile (landscape) */
 /* Tablet */
 /* Desktop */
 /* Global site nav */
@@ -502,64 +502,62 @@ form.search button {
 .site-nav {
   height: 0;
   overflow: hidden; }
+  .site-nav.active {
+    height: auto; }
+  .site-nav ul {
+    margin: 0;
+    padding: 0; }
+  .site-nav li {
+    border-top: 1px solid #999;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative; }
+  .site-nav a {
+    background: #dbdbdb;
+    color: #333;
+    display: block;
+    padding: 10px;
+    text-decoration: none; }
+    .site-nav a:hover {
+      background: #f5f5f5; }
 
-.site-nav.active {
-  height: auto; }
-
-.site-nav ul {
-  margin: 0;
-  padding: 0; }
-
-.site-nav li {
-  border-top: 1px solid #999;
-  display: block;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative; }
-
-.site-nav a {
-  background: #dbdbdb;
-  color: #333;
-  display: block;
-  padding: 10px;
-  text-decoration: none; }
-
-.site-nav a:hover {
-  background: #f5f5f5; }
-
-.site-nav ul > li.current_page_item a,
-.site-nav ul > li.current_page_parent a,
-.site-nav ul > li.current_page_ancestor a,
-.site-nav ul > li.current_menu_item a,
-.site-nav ul > li.current_menu_parent a,
-.site-nav ul > li.current_menu_ancestor a {
-  background: #999;
+/* Highlight active page */
+.site-nav ul > li.current_page_item > a,
+.site-nav ul > li.current_menu_item > a {
+  background: #888;
   color: #fff; }
 
+/* Highlight active parent */
+.site-nav ul > li.current_page_parent > a,
+.site-nav ul > li.current_page_ancestor > a,
+.site-nav ul > li.current_menu_parent > a,
+.site-nav ul > li.current_menu_ancestor > a {
+  background: #aaa;
+  color: #fff; }
+
+/* Sub-nav */
 .site-nav ul ul {
   font-size: 90%; }
-
-.site-nav ul ul li {
-  border-top: 1px solid #dbdbdb;
-  width: 100%; }
-
-.site-nav ul ul a:hover {
-  background: #f5f5f5;
-  color: #000; }
+  .site-nav ul ul li {
+    border-top: 1px solid #dbdbdb;
+    width: 100%; }
+  .site-nav ul ul a:hover {
+    background: #f5f5f5;
+    color: #000; }
 
 /* Mobile */
 /* Tablet */
-@media screen and (min-width: 768px) {
-  /* On desktop it's horizontal with children as drop downs (using CSS) */
+@media screen and (min-width: 569px) {
+  /* On desktop/tablet the nav is horizontal with children as drop downs (using CSS) */
   .site-nav {
     height: auto !important;
     overflow: visible; }
-
-  .site-nav li {
-    border-top: none;
-    display: inline-block;
-    margin: 0 2px 0 0; }
+    .site-nav li {
+      border-top: none;
+      display: inline-block;
+      margin: 0 2px 0 0; }
 
   /* Show children on hover */
   .site-nav ul ul {
@@ -574,17 +572,21 @@ form.search button {
     position: absolute;
     top: auto;
     z-index: 5;
-    width: 300px; }
+    width: 300px;
+    /* magic number <- make ems? or rems? */ }
 
   .site-nav ul.children li ul.children {
     left: 300px;
+    /* magic number <- make ems? or rems? */
     top: 0; }
 
   .site-nav ul ul > li:first-child {
     border-top: none; } }
 /* Desktop */
 /* Global site content */
-.primary, .sidebar, .secondary {
+.primary,
+.sidebar,
+.secondary {
   border-top: 1px dotted #000;
   clear: both;
   float: left;
@@ -593,11 +595,12 @@ form.search button {
   position: relative;
   width: 100%; }
 
-/* Mobile */
+/* Mobile (landscape) */
 /* Tablet */
 @media screen and (min-width: 768px) {
   .primary,
-  .secondary, .sidebar {
+  .secondary,
+  .sidebar {
     border-top: none;
     clear: none;
     padding-top: 0; }
@@ -605,7 +608,8 @@ form.search button {
   .primary {
     width: 65%; }
 
-  .secondary, .sidebar {
+  .secondary,
+  .sidebar {
     float: right;
     width: 30%; } }
 /* Desktop */
@@ -615,60 +619,82 @@ form.search button {
   font-size: 12px;
   margin: 40px 0 0;
   padding: 20px 0;
-  text-align: center; }
+  text-align: center;
+  /* Footer child menu - always hide (too complicated otherwise) */ }
+  .site-footer small {
+    display: block; }
+  .site-footer ul {
+    margin: 0;
+    padding: 0; }
+  .site-footer li {
+    display: inline-block;
+    margin: 0 1em 0 0;
+    padding: 0; }
+    .site-footer li a {
+      color: #444;
+      text-decoration: none; }
+    .site-footer li a:visited {
+      color: #000; }
+    .site-footer li a:hover {
+      color: #999; }
+  .site-footer .social-list {
+    margin-top: 1em; }
+  .site-footer li ul {
+    display: none; }
 
-.site-footer small {
-  display: block; }
-
-.site-footer ul {
-  margin: 0;
-  padding: 0; }
-
-.site-footer li {
-  display: inline-block;
-  margin: 0 1em 0 0;
-  padding: 0; }
-
-.site-footer li a {
-  color: #444;
-  text-decoration: none; }
-
-.site-footer li a:visited {
-  color: #000; }
-
-.site-footer li a:hover {
-  color: #999; }
-
-.site-footer .social-list {
-  margin-top: 1em; }
-
-/* Footer child menu - always hide (too complicated otherwise) */
-.site-footer li ul {
-  display: none; }
-
-/* Mobile */
+/* Mobile (landscape) */
 /* Tablet */
 @media screen and (min-width: 768px) {
   .site-footer {
     text-align: left; }
-
-  .site-footer .footer-section {
-    float: right;
-    text-align: right;
-    width: 50%; }
-
-  .site-footer .footer-section + .footer-section {
-    float: left;
-    text-align: left; }
-
-  .site-footer .menu,
-  .site-footer ul {
-    display: inline-block;
-    vertical-align: top; }
-
-  .site-footer .social-list {
-    margin-top: 0; }
-
-  .site-footer li:last-child {
-    margin-right: 0; } }
+    .site-footer .footer-section {
+      float: right;
+      text-align: right;
+      width: 50%; }
+    .site-footer .footer-section + .footer-section {
+      float: left;
+      text-align: left; }
+    .site-footer .menu,
+    .site-footer ul {
+      display: inline-block;
+      vertical-align: top; }
+    .site-footer .social-list {
+      margin-top: 0; }
+    .site-footer li:last-child {
+      margin-right: 0; } }
 /* Desktop */
+/**
+ *	4 Individual pages/sections
+ */
+/**
+ *	5 Mobile / RWD helper classes
+ */
+/**
+ *	5 Mobile/RWD helper classes
+ */
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .mobile-hidden,
+  .tablet-only,
+  .desktop-only {
+    display: none !important; } }
+@media screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  .mobile-hidden,
+  .tablet-only,
+  .desktop-only {
+    display: none !important; } }
+@media screen and (min-width: 569px) {
+  .mobile-only {
+    display: none !important; } }
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .tablet-hidden,
+  .mobile-hidden,
+  .mobile-only,
+  .desktop-only {
+    display: none !important; } }
+@media screen and (min-width: 1024px) {
+  .desktop-hidden {
+    display: none !important; } }
+@media screen and (min-width: 1025px) {
+  .mobile-only,
+  .tablet-only {
+    display: none !important; } }

@@ -3,7 +3,9 @@
 	
 }
 
-.primary, .sidebar, .secondary{
+.primary, 
+.sidebar, 
+.secondary{
 	border-top: 1px dotted #000;
 	clear: both;
 	float: left;
@@ -22,7 +24,7 @@
 
 
 
-/* Mobile */
+/* Mobile (landscape) */
 @media screen and (min-width: 568px) {
 
 }
@@ -31,7 +33,8 @@
 /* Tablet */
 @media screen and (min-width: 768px) {
 	.primary,
-	.secondary, .sidebar{
+	.secondary, 
+	.sidebar{
 		border-top: none;
 		clear: none;
 		padding-top: 0;
@@ -41,7 +44,8 @@
 		width: 65%;
 	}
 	
-	.secondary, .sidebar{
+	.secondary, 
+	.sidebar{
 		float: right;
 		width: 30%;
 	}
