@@ -2,8 +2,11 @@
  *	5 Mobile/RWD helper classes
  */
 
-/* Mpbile*/
-@media screen and (min-device-width: 320px)  and (max-device-width: 480px) {
+/* Mobile */
+@media 
+screen and (max-width: 568px),
+screen and (min-device-width: 320px) and (max-device-width: 480px), 
+screen and (min-device-width: 320px) and (max-device-width: 568px)  {
 	.mobile-hidden,
 	.tablet-only,
 	.desktop-only{
@@ -11,17 +14,10 @@
 	}
 }
 
-/* Mobile - iPhone 5 */
-@media screen and (min-device-width: 320px)  and (max-device-width: 568px) {
-	.mobile-hidden,
-	.tablet-only,
-	.desktop-only{
-		display: none !important;
-	}
-}
 
 /* Tablet */
-@media screen and (min-device-width: 768px)  and (max-device-width: 1024px) {
+@media
+screen and (min-device-width: 768px)  and (max-device-width: 1024px) {
 	.tablet-hidden,
 	.mobile-only,
 	.desktop-only{
@@ -30,14 +26,16 @@
 }
 
 /* Tablet landscape (give it desktop styles) and desktop */
-@media screen and (min-width: 1024px) {
+@media 
+screen and (min-width: 1024px) {
 	.desktop-hidden{
 		display: none !important;
 	}	
 }
 
 /* Desktop + */
-@media screen and (min-width: 1025px) {
+@media 
+screen and (min-width: 1025px) {
 	.mobile-only,
 	.tablet-only{
 		display: none !important;

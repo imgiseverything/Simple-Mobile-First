@@ -672,28 +672,23 @@ form.search button {
 /**
  *	5 Mobile/RWD helper classes
  */
-@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+/* Mobile */
+@media screen and (max-width: 568px), screen and (min-device-width: 320px) and (max-device-width: 480px), screen and (min-device-width: 320px) and (max-device-width: 568px) {
   .mobile-hidden,
   .tablet-only,
   .desktop-only {
     display: none !important; } }
-@media screen and (min-device-width: 320px) and (max-device-width: 568px) {
-  .mobile-hidden,
-  .tablet-only,
-  .desktop-only {
-    display: none !important; } }
-@media screen and (min-width: 569px) {
-  .mobile-only {
-    display: none !important; } }
+/* Tablet */
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .tablet-hidden,
-  .mobile-hidden,
   .mobile-only,
   .desktop-only {
     display: none !important; } }
+/* Tablet landscape (give it desktop styles) and desktop */
 @media screen and (min-width: 1024px) {
   .desktop-hidden {
     display: none !important; } }
+/* Desktop + */
 @media screen and (min-width: 1025px) {
   .mobile-only,
   .tablet-only {
