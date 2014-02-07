@@ -11,7 +11,7 @@ get_header(); ?>
 	<h1 class="page-title">Search results for: <em><?php echo get_search_query(); ?></em></h1>
 	<?php 
 	if ( have_posts() ) : 
-		get_template_part( 'loop', 'search' );
+		get_template_part( 'partials/loop', 'search' );
 	else : 
 	?>
 	<p>Sorry, but nothing matched your search criteria. Please try again with some different keywords.</p>

@@ -9,7 +9,7 @@ get_header(); ?>
 
 <div class="primary" role="main">
 
-<?php get_template_part( 'loop', 'single' ); ?>
+<?php get_template_part( 'partials/loop', 'single' ); ?>
 
 </div>
 

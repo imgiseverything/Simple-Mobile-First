@@ -16,7 +16,7 @@ get_header(); ?>
 			echo '<div class="archive-meta">' . wpautop($category_description) . '</div>';
 		endif;
 		
-		get_template_part( 'loop', 'category' );
+		get_template_part( 'partials/loop', 'category' );
 	?>
 
 </div>

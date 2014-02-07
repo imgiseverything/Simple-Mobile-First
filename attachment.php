@@ -8,7 +8,7 @@
 get_header(); ?>
 
 <div class="primary" role="main">
-	<?php get_template_part( 'loop', 'attachment' ); ?>
+	<?php get_template_part( 'partials/loop', 'attachment' ); ?>
 </div>
 
 <?php get_footer(); ?>

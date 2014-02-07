@@ -39,7 +39,7 @@ get_header(); ?>
 	 */
 	rewind_posts();
 
-	get_template_part( 'loop', 'archive' );
+	get_template_part( 'partials/loop', 'archive' );
 ?>
 
 </div>

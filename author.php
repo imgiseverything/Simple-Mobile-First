@@ -44,7 +44,7 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 	 */
 	rewind_posts();
 
-	get_template_part( 'loop', 'author' );
+	get_template_part( 'partials/loop', 'author' );
 	 
 ?>
 </div>
