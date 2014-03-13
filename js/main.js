@@ -1,9 +1,11 @@
 /**
  *	WordPress Theme Global scripting
  *	@author	Phil Thompson
- *	global jQuery
  */
- 
+
+/*jslint browser: true, devel: true, white: true, todo: true */
+
+/*global requestAnimationFrame: true, Modernizr: true */
  
 
 (function ($) {

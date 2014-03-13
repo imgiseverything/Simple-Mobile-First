@@ -14,14 +14,14 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: [
-					'scripts/plugins/*.js', 
-					'!scripts/plugins/jquery-1.10.2.min.js',
-					'!scripts/plugins/respond.js',
-					'scripts/*.js',
-					'!scripts/<%= pkg.name %>.js',
-					'!scripts/<%= pkg.name %>.min.js'
+					'js/plugins/*.js', 
+					'!js/plugins/jquery-1.10.2.min.js',
+					'!js/plugins/respond.js',
+					'js/*.js',
+					'!js/<%= pkg.name %>.js',
+					'!js/<%= pkg.name %>.min.js'
 				],
-				dest: 'scripts/<%= pkg.name %>.js'
+				dest: 'js/<%= pkg.name %>.js'
 			}
 		},
 		
@@ -34,6 +34,32 @@ module.exports = function(grunt) {
 					'js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
 				}
 			}
+		},
+		
+		jslint: {
+			
+			client: {
+				src: [
+					'js/main.js'
+				],
+				directives: {
+					browser: true,
+					devel: true,
+					white: true,
+					todo: true,
+					unparam: true,
+					unused: true,
+					predef: [
+						'jQuery',
+						'requestAnimationFrame',
+						'Modernizr',
+						'Hammer'
+					]
+				},
+				options: {
+				}
+			}
+			
 		},
 		
 		sass: {                                 		// Task
@@ -101,8 +127,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-jslint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', ['sass', 'cssmin', 'concat', 'uglify', 'imagemin']);
+	grunt.registerTask('default', ['sass', 'cssmin', 'concat', 'uglify', 'jslint', 'imagemin']);
 
 };
