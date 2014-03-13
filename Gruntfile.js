@@ -13,8 +13,15 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			dist: {
-				src: ['js/polyfill.requestAnimationFrame.js', 'js/hoverintent.jquery.js', 'js/jquery.hammer.js', 'js/d3.v3.min.js', 'js/plugins.js', 'js/donut.js', 'js/jquery.fitText.js', 'js/main.js'],
-				dest: 'js/<%= pkg.name %>.js'
+				src: [
+					'scripts/plugins/*.js', 
+					'!scripts/plugins/jquery-1.10.2.min.js',
+					'!scripts/plugins/respond.js',
+					'scripts/*.js',
+					'!scripts/<%= pkg.name %>.js',
+					'!scripts/<%= pkg.name %>.min.js'
+				],
+				dest: 'scripts/<%= pkg.name %>.js'
 			}
 		},
 		
@@ -32,7 +39,7 @@ module.exports = function(grunt) {
 		sass: {                                 		// Task
 	        dist: {                             		// Target
 	            files: {                        	// Dictionary of files
-	                'style.css': 'sass/style.scss'     // 'destination': 'source'
+	                'style.css': '_sass/style.scss'     // 'destination': 'source'
 	            }
 	        }
 	    },
@@ -83,7 +90,7 @@ module.exports = function(grunt) {
 		},
 		
 		watch: {
-			files: ['sass/*.scss', 'js/*.js', '!js/<%= pkg.name %>.js', '!js/<%= pkg.name %>.min.js'],
+			files: ['_sass/*.scss', 'js/*.js', '!js/<%= pkg.name %>.js', '!js/<%= pkg.name %>.min.js'],
 			tasks: ['sass', 'cssmin','concat'/*, 'uglify'*/]
 		}
 	});
