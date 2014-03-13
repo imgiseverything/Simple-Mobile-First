@@ -1,38 +1,34 @@
 <?php
 /**
- * Theme functions and definitions
- * @package WordPress
+ *	Theme functions and definitions
+ *	@package WordPress
  */
 
 
-/** Tell WordPress to run nocruft_setup() when the 'after_setup_theme' hook is run. */
+/** Tell WordPress to run theme_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'theme_setup' );
 
 if ( ! function_exists( 'theme_setup' ) ):
 /**
- * Sets up theme defaults and registers support for various WordPress features.
+ *	Sets up theme defaults and registers support for various WordPress features.
  *
- * Note that this function is hooked into the after_setup_theme hook, which runs
- * before the init hook. The init hook is too late for some features, such as indicating
- * support post thumbnails.
+ *	Note that this function is hooked into the after_setup_theme hook, which runs
+ *	before the init hook. The init hook is too late for some features, such as indicating
+ *	support post thumbnails.
  *
- * To override nocruft_setup() in a child theme, add your own nocruft_setup to your child theme's
- * functions.php file.
+ *	To override simplemobilefirst_setup() in a child theme, add your own simplemobilefirst_setup to your child theme's
+ *	functions.php file.
  *
- * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
- * @uses register_nav_menus() To add support for navigation menus.
- * @uses add_editor_style() To style the visual editor.
- * @uses add_custom_image_header() To add support for a custom header.
- * @uses register_default_headers() To register the default custom header images provided with the theme.
- * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
+ *	@uses add_editor_style() To style the visual editor.
+ *	@uses add_theme_support() To add support for post thumbnails and automatic feed links.
+ *	@uses register_nav_menus() To add support for navigation menus.
+ *	Commented out section makes use of the IMG Custom Post Types Plugin to set-up custom post types
+ *	http://wordpress.org/plugins/img-custom-post-types/
  */
 function theme_setup() {
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
-
-	// Post Format support. You can also use the legacy "gallery" or "asides" (note the plural) categories.
-	//add_theme_support( 'post-formats', array( 'aside', 'image', 'video' ) );
 
 	// This theme uses post thumbnails
 	add_theme_support( 'post-thumbnails' );
@@ -48,7 +44,7 @@ function theme_setup() {
 
 
 	// Add a custom post type - http://wordpress.org/plugins/img-custom-post-types/
-	if (class_exists('IMGCustomPostTypes') === true ) {
+	/*if (class_exists('IMGCustomPostTypes') === true ) {
 	
 		// Example custom post type
 		$cpt_example = new IMGCustomPostTypes();
@@ -62,21 +58,19 @@ function theme_setup() {
 			'tag_singular'		=> 'Example tag',
 			'tag_plural'		=> 'Example tags'
 		);
-		$cpt_example->supports = array('title', 'editor', 'excerpt', 'thumbnail', 'page-attributes'/*, 'comments'*/);
+		$cpt_example->supports = array('title', 'editor', 'excerpt', 'thumbnail', 'page-attributes');
 		
-	}
-	
+	}*/
 
 }
 endif;
 
 
-// Remove stupid WP sections like links
+// Remove Comments from Admin Area (remove this section of code if not needed)
 add_action( 'admin_menu', 'my_admin_menu' );
 function my_admin_menu() {
-	//remove_menu_page('edit-comments.php');
+	remove_menu_page('edit-comments.php');
 }
-
 
 function remove_pages_count_columns($defaults) {
 	unset($defaults['comments']);
@@ -87,132 +81,150 @@ function remove_pages_count_columns($defaults) {
 add_filter('manage_pages_columns', 'remove_pages_count_columns');
 add_filter('manage_posts_columns', 'remove_pages_count_columns');
 
+// End of Remove Comments from Admin Area code
 
-
-
-
-// remove annoying "Robots Meta" columns that WP SEO puts in
+// Remove annoying "Robots Meta" columns that WP SEO puts in
 remove_filter('manage_page_posts_columns', array($wpseo_metabox, 'page_title_column_heading'), 10, 1);
 remove_filter('manage_post_posts_columns', array($wpseo_metabox, 'page_title_column_heading'), 10, 1);
 remove_action('manage_pages_custom_column', array($wpseo_metabox, 'page_title_column_content'), 10, 2);
 remove_action('manage_posts_custom_column', array($wpseo_metabox, 'page_title_column_content'), 10, 2);
 
-// Remove WordPress SEO's awful extra columns
-add_filter('manage_edit-post_columns', 'tcz_remove_WPSEO_columns');
-add_filter('manage_edit-page_columns', 'tcz_remove_WPSEO_columns');
-// you'll need one call for each CPT; so for vanilla WP has 'post' & 'page'
+// 
 
+/**
+ *	tcz_remove_WPSEO_columns
+ *	Remove WordPress SEO's awful extra columns
+ *	Note: You'll need one call for each Custom Post Type; WordPress 'out the box' just has 'post' & 'page'
+ *	@param	array
+ *	@return array
+ */
 function tcz_remove_WPSEO_columns($columns){
     unset($columns['wpseo-score']);
-    unset($columns['wpseo-title']);
+    //unset($columns['wpseo-title']); // This option is actually quite useful to see/know
     unset($columns['wpseo-metadesc']);
     unset($columns['wpseo-focuskw']);
     return $columns;
 }
 
+add_filter('manage_edit-post_columns', 'tcz_remove_WPSEO_columns');
+add_filter('manage_edit-page_columns', 'tcz_remove_WPSEO_columns');
+
 
 /**
- * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
+ *	simplemobilefirst_page_menu_args
+ *	Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  *
- * To override this in a child theme, remove the filter and optionally add
- * your own function tied to the wp_page_menu_args filter hook.
- *
+ *	To override this in a child theme, remove the filter and optionally add
+ *	your own function tied to the wp_page_menu_args filter hook.
+ *	
+ *	@param	array
+ *	@return	array
  */
-function nocruft_page_menu_args( $args ) {
+function simplemobilefirst_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'nocruft_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'simplemobilefirst_page_menu_args' );
 
 /**
- * Sets the post excerpt length to 40 characters.
+ *	simplemobilefirst_excerpt_length
+ *	Sets the post excerpt length to 40 characters.
  *
- * To override this length in a child theme, remove the filter and add your own
- * function tied to the excerpt_length filter hook.
+ *	To override this length in a child theme, remove the filter and add your own
+ *	function tied to the excerpt_length filter hook.
  *
- * @return int
+ *	@param	int
+ *	@return	int
  */
-function nocruft_excerpt_length( $length ) {
+function simplemobilefirst_excerpt_length( $length ) {
 	return 40;
 }
-add_filter( 'excerpt_length', 'nocruft_excerpt_length' );
+add_filter( 'excerpt_length', 'simplemobilefirst_excerpt_length' );
 
 /**
- * Returns a "Continue Reading" link for excerpts
- *
- * @return string "Continue Reading" link
+ *	simplemobilefirst_continue_reading_link
+ *	Returns a "Continue Reading" link for excerpts
+ *	For accesibility this reads Continue Reading Post Title with Post Title
+ *	wrapped in a span tag and a class which CSS defines will be read by screenreaders/search 
+ *	engines but *won't* be visibly shown on the page
+ *	@return string "Continue Reading" link
  */
-function nocruft_continue_reading_link() {
+function simplemobilefirst_continue_reading_link() {
 	return '</p><p><a href="'. get_permalink() . '" class="button button-read-more">' . 'Continue reading <span class="visuallyhidden">' . get_the_title() . '</span>' . '</a></p>';
 }
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and nocruft_continue_reading_link().
+ *	simplemobilefirst_auto_excerpt_more
+ *	Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and simplemobilefirst_continue_reading_link().
  *
- * To override this in a child theme, remove the filter and add your own
- * function tied to the excerpt_more filter hook.
+ *	To override this in a child theme, remove the filter and add your own
+ *	function tied to the excerpt_more filter hook.
  *
- * @return string An ellipsis
+ *	@param string
+ *	@return string An ellipsis
  */
-function nocruft_auto_excerpt_more( $more ) {
-	return ' &hellip;' . nocruft_continue_reading_link();
+function simplemobilefirst_auto_excerpt_more( $more ) {
+	return ' &hellip;' . simplemobilefirst_continue_reading_link();
 }
-add_filter( 'excerpt_more', 'nocruft_auto_excerpt_more' );
+add_filter( 'excerpt_more', 'simplemobilefirst_auto_excerpt_more' );
 
 /**
- * Adds a pretty "Continue Reading" link to custom post excerpts.
+ *	simplemobilefirst_custom_excerpt_more
+ *	Adds a pretty "Continue Reading" link to custom post excerpts.
  *
- * To override this link in a child theme, remove the filter and add your own
- * function tied to the get_the_excerpt filter hook.
+ *	To override this link in a child theme, remove the filter and add your own
+ *	function tied to the get_the_excerpt filter hook.
  *
- * @return string Excerpt with a pretty "Continue Reading" link
+ *	@param	string
+ *	@return	string Excerpt with a pretty "Continue Reading" link
  */
-function nocruft_custom_excerpt_more( $output ) {
+function simplemobilefirst_custom_excerpt_more( $output ) {
 	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= nocruft_continue_reading_link();
+		$output .= simplemobilefirst_continue_reading_link();
 	}
 	return $output;
 }
-add_filter( 'get_the_excerpt', 'nocruft_custom_excerpt_more' );
+add_filter( 'get_the_excerpt', 'simplemobilefirst_custom_excerpt_more' );
 
 /**
- * Remove inline styles printed when the gallery shortcode is used.
+ *	Remove inline styles printed when the gallery shortcode is used.
  *
- * Galleries are styled by the theme in Twenty Ten's style.css. This is just
- * a simple filter call that tells WordPress to not use the default styles.
- *
- * @since Twenty Ten 1.2
+ *	Galleries are styled by the theme in Simple Mobile First's style.css. This is just
+ *	a simple filter call that tells WordPress to not use the default styles.
  */
 add_filter( 'use_default_gallery_style', '__return_false' );
 
 /**
- * Deprecated way to remove inline styles printed when the gallery shortcode is used.
+ *	simplemobilefirst_remove_gallery_css	
+ *	Deprecated way to remove inline styles printed when the gallery shortcode is used.
  *
- * This function is no longer needed or used. Use the use_default_gallery_style
- * filter instead, as seen above.
+ *	This function is no longer needed or used. Use the use_default_gallery_style
+ *	filter instead, as seen above.
  *
- * @deprecated Deprecated in Twenty Ten 1.2 for WordPress 3.1
+ *	@deprecated Deprecated in Twenty Ten 1.2 for WordPress 3.1
  *
- * @return string The gallery style filter, with the styles themselves removed.
+ *	@param string
+ *	@return string The gallery style filter, with the styles themselves removed.
  */
-function nocruft_remove_gallery_css( $css ) {
+function simplemobilefirst_remove_gallery_css( $css ) {
 	return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
 }
 // Backwards compatibility with WordPress 3.0.
 if ( version_compare( $GLOBALS['wp_version'], '3.1', '<' ) )
-	add_filter( 'gallery_style', 'nocruft_remove_gallery_css' );
+	add_filter( 'gallery_style', 'simplemobilefirst_remove_gallery_css' );
 
-if ( ! function_exists( 'nocruft_comment' ) ) :
+if ( ! function_exists( 'simplemobilefirst_comment' ) ) :
 /**
- * Template for comments and pingbacks.
+ *	simplemobilefirst_comment
+ *	Template for comments and pingbacks.
  *
- * To override this walker in a child theme without modifying the comments template
- * simply create your own nocruft_comment(), and that function will be used instead.
+ *	To override this walker in a child theme without modifying the comments template
+ *	simply create your own simplemobilefirst_comment(), and that function will be used instead.
  *
- * Used as a callback by wp_list_comments() for displaying the comments.
+ *	Used as a callback by wp_list_comments() for displaying the comments.
  *
  */
-function nocruft_comment( $comment, $args, $depth ) {
+function simplemobilefirst_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case '' :
@@ -252,14 +264,17 @@ function nocruft_comment( $comment, $args, $depth ) {
 }
 endif;
 /**
- * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
+ *	simplemobilefirst_widgets_init
+ *	Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
  *
- * To override nocruft_widgets_init() in a child theme, remove the action hook and add your own
- * function tied to the init hook.
+ *	To override simplemobilefirst_widgets_init() in a child theme, remove the action hook and add your own
+ *	function tied to the init hook.
  *
- * @uses register_sidebar
+ *	Commented out because widgets are HORRIBLE. (In htis dev's opinion anway)
+ *
+ *	@uses register_sidebar
  */
-function nocruft_widgets_init() {
+function simplemobilefirst_widgets_init() {
 	// Area 1, located at the top of the sidebar.
 	/*register_sidebar( array(
 		'name' => 'Primary Widget Area',
@@ -294,31 +309,33 @@ function nocruft_widgets_init() {
 	) );*/
 
 }
-/** Register sidebars by running nocruft_widgets_init() on the widgets_init hook. */
-add_action( 'widgets_init', 'nocruft_widgets_init' );
+/** Register sidebars by running simplemobilefirst_widgets_init() on the widgets_init hook. */
+add_action( 'widgets_init', 'simplemobilefirst_widgets_init' );
 
 /**
- * Removes the default styles that are packaged with the Recent Comments widget.
+ *	simplemobilefirst_remove_recent_comments_style
+ *	Removes the default styles that are packaged with the Recent Comments widget.
  *
- * To override this in a child theme, remove the filter and optionally add your own
- * function tied to the widgets_init action hook.
+ *	To override this in a child theme, remove the filter and optionally add your own
+ *	function tied to the widgets_init action hook.
  *
- * This function uses a filter (show_recent_comments_widget_style) new in WordPress 3.1
- * to remove the default style. Using Twenty Ten 1.2 in WordPress 3.0 will show the styles,
- * but they won't have any effect on the widget in default Twenty Ten styling.
+ *	This function uses a filter (show_recent_comments_widget_style) new in WordPress 3.1
+ *	to remove the default style. Using Twenty Ten 1.2 in WordPress 3.0 will show the styles,
+ *	but they won't have any effect on the widget in default Twenty Ten styling.
  *
  */
-function nocruft_remove_recent_comments_style() {
+function simplemobilefirst_remove_recent_comments_style() {
 	add_filter( 'show_recent_comments_widget_style', '__return_false' );
 }
-add_action( 'widgets_init', 'nocruft_remove_recent_comments_style' );
+add_action( 'widgets_init', 'simplemobilefirst_remove_recent_comments_style' );
 
-if ( ! function_exists( 'nocruft_posted_on' ) ) :
+if ( ! function_exists( 'simplemobilefirst_posted_on' ) ) :
 /**
- * Prints HTML with meta information for the current post-date/time and author.
+ *	simplemobilefirst_posted_on
+ *	Prints HTML with meta information for the current post-date/time and author.
  *
  */
-function nocruft_posted_on() {
+function simplemobilefirst_posted_on() {
 	printf( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s',
 		'meta-prep meta-prep-author',
 		sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
@@ -330,12 +347,13 @@ function nocruft_posted_on() {
 }
 endif;
 
-if ( ! function_exists( 'nocruft_posted_in' ) ) :
+if ( ! function_exists( 'simplemobilefirst_posted_in' ) ) :
 /**
- * Prints HTML with meta information for the current post (category, tags and permalink).
+ *	simplemobilefirst_posted_in
+ *	Prints HTML with meta information for the current post (category, tags and permalink).
  *
  */
-function nocruft_posted_in() {
+function simplemobilefirst_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
 	if ( $tag_list ) {
@@ -357,7 +375,7 @@ endif;
 
 /**
  *	extend_body_class
- * 	Add page slug to the <body class=""> values for  mo' better CSS styling
+ *	Add the page slug to the <body class=""> values for  mo' better CSS styling
  *	If the URL is /directory/sub-directory/page then add:
  *	directory, subdirectory and page values to the classes list
  *	@param	array list of current classes
@@ -388,6 +406,7 @@ function extend_body_class( $classes ) {
  *	is_ajax
  *	Is the page request an AJAX call? Use this to determine
  *	what content to show e.g. hide get_header() in a template
+ *	@usage	if(is_ajax() !== true): get_header(); endif;
  *	@return	boolean
  */
 function is_ajax(){
@@ -404,7 +423,6 @@ function is_ajax(){
 	return $ajax;
 }
 
-
 /**
  *	get_parameter
  *	Display array parameters on the page and avoid
@@ -412,7 +430,7 @@ function is_ajax(){
  *
  *	@param 	string $key
  *	@return string $value;
- *	@usage	echo get_parameter($_POST, 'foo', 'bar'); or go deep yo
+ *	@usage	echo get_parameter($_POST, 'foo', 'bar'); or go deep
  *			get_parameter($_POST, 'foo', get_parameter($_GET, 'foo', 'bar'));
  */
 function get_parameter($object, $key, $default = ''){
@@ -425,8 +443,6 @@ function get_parameter($object, $key, $default = ''){
 	
 	return $value;
 }
-
-
 
 /**
  *	mo_better_archives
@@ -441,15 +457,13 @@ function mo_better_archives($class, $blog_prefix = 'blog'){
 
 	global $wpdb;
 
-	
 	$now = date('Y');
 	
 	// TODO get another year's date if we're on it
 	if(is_archive()){
 		$now = get_the_date( 'Y' );
 	}
-	
-	
+
 	// Massive SQL query that grabs months/years where a post has been published
 	$query = "
 	SELECT COUNT(ID) posts, YEAR(post_date) y, MONTH(post_date) m 
@@ -479,8 +493,7 @@ function mo_better_archives($class, $blog_prefix = 'blog'){
 	
 		if(!is_array($archives[$archives[$i]['y']])){
 			$archives[$archives[$i]['y']] = array('y' => $archives[$i]['y']);
-		}
-	
+		}	
 	
 		if($archives[$i]['m'] > 0){
 			$archives[$archives[$i]['y']][] = $archives[$i];
@@ -488,12 +501,9 @@ function mo_better_archives($class, $blog_prefix = 'blog'){
 		} else{
 			unset($archives[$i]);
 		}
-		
-		
+
 	}
 	
-
-
 	// Sift through that there above array and create gorgeous HTML <li>s and child <li>s
 	$list = '';
 
@@ -526,14 +536,17 @@ function mo_better_archives($class, $blog_prefix = 'blog'){
 	$list .= '</li>';
 	
 	} // end foreach
-	
 
-	
 	return $list;
-	
+
 }
 
-
+/**
+ *	add_slug_class_to_menu_item
+ *	Add page slug to the class on relevant menu items for easier CSS styling
+ *	@param	array
+ *	@return	array
+ */
 function add_slug_class_to_menu_item($output){
 	$ps = get_option('permalink_structure');
 	if(!empty($ps)){
@@ -545,32 +558,28 @@ function add_slug_class_to_menu_item($output){
 		}
 	}
 	
-	
 	$blogurl = str_replace('http://', '', get_bloginfo('siteurl'));
 	
 	$output = str_replace('menu-item-' . $blogurl, 'menu-item-home', $output);
-	
-	
+
 	return $output;
 }
+
 add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
-
-
-
-
-
 
 /**
  *	urlify()
  *	CREATE URL-friendly strings
+ *	1. Strip everything but letters, numbers and spaces from the title
+ *	2. Replace spaces and underscores with dashes
+ *	3. Make lowercase
+ *	@param	string
+ *	@return	string
  */
 function urlify($string){
 
-	// Strip everything but letters, numbers and spaces from the title
 	$string = preg_replace("/[^A-Za-z0-9 ]/", "", trim($string));
-	// Replace spaces and underscores with dashes
 	$string = str_replace(array(" ", "_"), '-', $string);
-	// Make lowercase
 	$string = strtolower($string);	
 		
 	return $string;
