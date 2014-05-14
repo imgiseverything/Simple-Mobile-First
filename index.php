@@ -8,8 +8,8 @@
 get_header(); ?>
 
 <div class="primary" role="main">
-<?php get_template_part( 'partials/loop', 'index' ); ?>
+<?php get_template_part('partials/loop', 'index'); ?>
 </div>
 
 <?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php get_footer();

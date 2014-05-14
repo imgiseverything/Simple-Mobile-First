@@ -21,7 +21,19 @@
 			<?php the_content(); ?>
 		</div>
 		<div class="entry-utility">
-			<?php nocruft_posted_in(); ?>
+			<?php if ( count( get_the_category() ) ) : ?>
+				<span class="cat-links">
+					<?php printf( '<span class="%1$s">Posted in:</span> %2$s', 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
+				</span>
+			<?php endif; ?>
+			<?php
+				$tags_list = get_the_tag_list( '', ', ' );
+				if ( $tags_list ):
+			?>
+				<span class="tag-links">
+					<?php printf( '<span class="%1$s">Tagged:</span> %2$s', 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
+				</span>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div class="group navigation">

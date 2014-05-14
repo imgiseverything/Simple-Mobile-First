@@ -40,15 +40,15 @@
 	<header class="group site-header">
 	
 		<div role="banner" class="group">
-			<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
+			<?php $heading_tag = (is_home() || is_front_page()) ? 'h1' : 'div'; ?>
 			<<?php echo $heading_tag; ?> class="logo ir">
-				<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+				<a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"><?php bloginfo('name'); ?></a>
 			</<?php echo $heading_tag; ?>>
 		</div>
 	
 		<nav role="navigation" class="group">
 			<div class="mobile-only button site-nav-button" title="Show/hide menu">Menu</div>
-			<?php wp_nav_menu( array( 'container' => '', 'container_class' => '', 'menu_class' => 'site-nav', 'theme_location' => 'primary' ) ); ?>
+			<?php wp_nav_menu(array( 'container' => '', 'container_class' => '', 'menu_class' => 'site-nav', 'theme_location' => 'primary')); ?>
 		</nav>
 			
 	</header>
