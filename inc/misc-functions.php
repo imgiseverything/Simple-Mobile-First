@@ -164,3 +164,13 @@ function move_admin_bar() {
 if(is_admin_bar_showing()){
 	add_action('wp_head', 'move_admin_bar');
 }
+
+
+/**
+ * Stop WordPress SEO making their metabox such a high priority.
+ */
+add_filter('wpseo_metabox_prio','lower_wpseo_metabox', 10);
+function lower_wpseo_metabox($priority) {
+	$priority = 'low';
+	return $priority;
+}
