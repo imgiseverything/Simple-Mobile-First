@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'js/plugins/*.js', 
-					'!js/plugins/jquery-1.10.2.min.js',
+					'!js/plugins/jquery-1.11.1.min.js',
 					'!js/plugins/respond.js',
 					'js/*.js',
 					'!js/<%= pkg.name %>.js',

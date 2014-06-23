@@ -24,10 +24,12 @@
 		$load_at_bottom = true;
 		
 		// jQuery
-		wp_enqueue_script('jquery');
+		wp_deregister_script('jquery');
+
+		wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', null, null, true);
 		
 		// Site specific scripts
-		wp_enqueue_script('global', get_template_directory_uri() . '/js/main.js', array('jquery'), '', $load_at_bottom);
+		wp_enqueue_script('global', get_template_directory_uri() . '/js/main.js', array('jquery'), null, $load_at_bottom);
 		
 		// End JavaScript files
 

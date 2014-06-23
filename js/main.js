@@ -5,21 +5,24 @@
 
 /*jslint browser: true, devel: true, white: true, todo: true */
 
-/*global requestAnimationFrame: true, Modernizr: true */
- 
+/*global requestAnimationFrame: true, Modernizr: true, smoothScroll: true */
+
+
+// Create a global object we can reference
+window.WordPressTheme = window.WordPressTheme || {};
 
 (function ($) {
 
 	"use strict";
 
-	var WordPressTheme = {
+	window.WordPressTheme = {
 
 		config: {
 			// Not used
 		},
 		
 		// Functions to run onload - note we don't need $(document).ready(); because we include this script before </body>
-		onReady: function(){
+		init: function(){
 			
 			var self = this;
 
@@ -57,6 +60,6 @@
 
 	};
 	
-	WordPressTheme.onReady();
+	window.WordPressTheme.init();
 
 }(jQuery));
