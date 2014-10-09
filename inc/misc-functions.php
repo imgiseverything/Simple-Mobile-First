@@ -8,7 +8,7 @@
  *	@param	array list of current classes
  *	@return	array list of current classes + new ones
  */
-add_filter( 'body_class', 'extend_body_class' );
+add_filter('body_class', 'extend_body_class');
 function extend_body_class( $classes ) {
 
 	$url = str_replace(array($_SERVER['QUERY_STRING'], '?'), '', $_SERVER['REQUEST_URI']);
@@ -74,7 +74,7 @@ function get_parameter($object, $key, $default = ''){
 function add_slug_class_to_menu_item($output){
 	$ps = get_option('permalink_structure');
 	if(!empty($ps)){
-		$idstr = preg_match_all('/<li id="menu-item-(\d+)/', $output, $matches);
+		$idstr = preg_match_all('/menu-item-(\d+)/', $output, $matches);
 		foreach($matches[1] as $mid){
 			$id = get_post_meta($mid, '_menu_item_object_id', true);
 			$slug = basename(get_permalink($id));
@@ -88,6 +88,8 @@ function add_slug_class_to_menu_item($output){
 
 	return $output;
 }
+
+add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
 
 add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
 
@@ -174,3 +176,26 @@ function lower_wpseo_metabox($priority) {
 	$priority = 'low';
 	return $priority;
 }
+
+/**
+ *	convert_wp_pagenavi_html_output
+ *	make wp-pagenavi's (which is awesome btw), less than awesome HTML output more awesome
+ *	@see http://calebserna.com/bootstrap-wordpress-pagination-wp-pagenavi/
+ */
+//attach our function to the wp_pagenavi filter
+add_filter('wp_pagenavi', 'convert_wp_pagenavi_html_output', 10, 2);
+function convert_wp_pagenavi_html_output($html) {
+    $pagination = '';
+  
+    //wrap a's and span's in li's
+    $pagination = str_replace('<div', '', $html);
+    $pagination = str_replace("class='wp-pagenavi'>", '', $pagination);
+    $pagination = str_replace('<a', '<li><a', $pagination);
+    $pagination = str_replace('</a>', '</a></li>', $pagination);
+    $pagination = str_replace('<span', '<li><span', $pagination);  
+    $pagination = str_replace('</span>', '</span></li>', $pagination);
+    $pagination = str_replace('</div>', '', $pagination);
+  
+    return '<ul class="pagination">' . $pagination . '</ul>';      
+}
+
