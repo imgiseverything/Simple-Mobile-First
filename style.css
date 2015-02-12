@@ -47,7 +47,6 @@ Author URI: http://imgiseverything.co.uk/
   src: url("fonts/ss-social/ss-social-regular.eot?#iefix") format("embedded-opentype"), url("fonts/ss-social/ss-social-regular.woff") format("woff"), url("fonts/ss-social/ss-social-regular.ttf") format("truetype"), url("fonts/ss-social/ss-social-regular.svg#SSSocialRegular") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 /* Box sizing - reset to a nicer understanding of the box model */
 * {
   -moz-box-sizing: border-box;
@@ -502,7 +501,7 @@ form.search button {
 .site-nav {
   height: 0;
   overflow: hidden; }
-  .site-nav.active {
+  .site-nav-active .site-nav {
     height: auto; }
   .site-nav ul {
     margin: 0;
@@ -550,6 +549,9 @@ form.search button {
 /* Mobile */
 /* Tablet */
 @media screen and (min-width: 569px) {
+  .site-nav-button {
+    display: none; }
+
   /* On desktop/tablet the nav is horizontal with children as drop downs (using CSS) */
   .site-nav {
     height: auto !important;
@@ -693,3 +695,5 @@ form.search button {
   .mobile-only,
   .tablet-only {
     display: none !important; } }
+
+/*# sourceMappingURL=style.css.map */

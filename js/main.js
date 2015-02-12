@@ -28,7 +28,9 @@ window.WordPressTheme = window.WordPressTheme || {};
 
 			self.jsHide();
 			
-			self.mobileMenu();
+			self.mobileMenu.init();
+			
+			self.socialShare.init();
 			
 		},
 		
@@ -40,22 +42,62 @@ window.WordPressTheme = window.WordPressTheme || {};
 		},
 		
 		// Allow a menu to be shown/hidden with the click of a button
-		mobileMenu: function(){
+		mobileMenu: {
 			
-			var $nav = $('.site-nav'),
-				$button = $('.site-nav-button');
-				
-			if($nav.length === 0 || $button.length === 0){
-				return;
-			}	
-				
-			$button.click(function(e){
-				e.preventDefault();
-				// Note: we're just gonna toggle classes with JS and we'll use CSS to display/animate stuff
-				$(this).toggleClass('active');
-				$nav.toggleClass('active');
-			});
+			$nav: $('.site-nav'),
+			$button: $('.site-nav-button'),
+			classes: {
+				active: 'site-nav-active'	
+			},
 			
+			init: function(){
+				var self = this;
+				
+				if(self.$nav.length === 0 || self.$button.length === 0){
+					return;
+				}	
+					
+				self.$button.click(function(e){
+					e.preventDefault();
+					self.toggleMenu();
+				});
+			},
+			
+			// Note: we're just gonna toggle classes with JS and 
+			// we'll use CSS to display/animate stuff
+			toggleMenu: function(){
+				var self = this;
+				$('body').toggleClass(self.classes.active);
+			}
+			
+		},
+		
+		// Open social share (e.g. Twitter/Facebook) links in a new small window
+		socialShare: {
+			
+			init: function(){
+				var self = this;
+
+				$('a[data-share]').click(function(e){
+					e.preventDefault();
+					self.popUp($(this).attr('href'));
+				});
+			},
+			
+			popUp: function(url){
+				
+				var newWindow,
+					height = 340,
+					width = 675,
+					left = (screen.width/2)-(width/2),
+					top = (screen.height/2)-(height/2);
+				
+				newWindow = window.open(url, 'Share', 'height=' + height + ',width=' + width + ',top=' + top + ',left=' + left);
+				
+				if(window.focus){
+					newWindow.focus();
+				}	
+			}
 		}
 
 	};

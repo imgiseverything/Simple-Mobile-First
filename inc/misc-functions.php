@@ -9,7 +9,7 @@
  *	@return	array list of current classes + new ones
  */
 add_filter('body_class', 'extend_body_class');
-function extend_body_class( $classes ) {
+function extend_body_class($classes) {
 
 	$url = str_replace(array($_SERVER['QUERY_STRING'], '?'), '', $_SERVER['REQUEST_URI']);
 	$url_parts = explode('/', $url);

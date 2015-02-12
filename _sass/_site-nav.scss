@@ -7,7 +7,7 @@
 	height: 0;
 	overflow: hidden;
 
-	&.active{
+	.site-nav-active &{
 		height: auto;
 	}
 
@@ -81,6 +81,11 @@
 
 /* Tablet */
 @media screen and (min-width: 569px) {
+	
+	
+	.site-nav-button{
+		display: none;	
+	}
 
 	/* On desktop/tablet the nav is horizontal with children as drop downs (using CSS) */
 	.site-nav{
