@@ -1,0 +1,43 @@
+/**
+ * Media object: hearts to @stubbornella
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ */
+
+$media-object-margin: 10px;
+
+.media{
+	text-align: left;
+}
+
+.media,
+.media__supporting{
+	overflow: hidden;
+	_overflow: visible;
+	zoom: 1;
+}
+
+.media__object{
+	float: left;
+	margin-right: $media-object-margin;
+
+	img{
+		display: block;
+	}
+}
+
+.media__object--alt{
+	float: right;
+	margin-left: $media-object-margin;
+	margin-right: 0;
+}
+
+.media__object--flush{
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.media__object--block{
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}

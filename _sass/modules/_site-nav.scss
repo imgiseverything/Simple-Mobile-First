@@ -35,9 +35,7 @@
 		&:hover{
 			background: #f5f5f5;
 		}
-		
 	}
-
 }		
 
 /* Highlight active page */
@@ -72,13 +70,6 @@
 	}	
 }
 
-
-/* Mobile */
-@media screen and (min-width: 568px) {
-
-}
-
-
 /* Tablet */
 @media screen and (min-width: 569px) {
 	
@@ -100,7 +91,7 @@
 	}
 	
 	/* Show children on hover */
-	.site-nav ul ul{
+	.site-nav ul{
 		display: none;
 	}
 	
@@ -109,12 +100,17 @@
 		left: 0;
 	}
 	
-	.site-nav ul ul{
+	.site-nav ul{
 		font-size: 90%;
 		position: absolute;
 		top: auto;
 		z-index: 5;
 		width: 300px; /* magic number <- make ems? or rems? */
+		
+		li{
+			clear: both;	
+		}
+		
 	}
 	
 	.site-nav ul.children li ul.children{
@@ -122,15 +118,13 @@
 		top: 0;
 	}
 				
-	.site-nav ul ul > li:first-child{
+	.site-nav ul > li:first-child{
 		border-top: none;
 	}
-
 }
 
 /* Desktop */
 @media screen and (min-width: 1024px) {
-
 
 
 }

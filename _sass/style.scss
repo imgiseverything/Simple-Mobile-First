@@ -7,64 +7,34 @@ Author URI: http://imgiseverything.co.uk/
 */
 
 /**
- *
- 	----------
-	CONTENTS
-	----------
-
-	Mobile first
-		
-		0 Misc
-			Webfonts
-		1 Resets/Normalise
-			Body
-			Links
-			Headings
-			Block level elements: p, ul, ol, dl, etc
-			Forms (default)
-		2 Helper classes / Common modules
-		3 Layout/structure (e.g. header, footer, etc)
-		4 Individual sections/pages - use a class on body tag for this e.g. body.home .parent .child{ etc: etc; }
-		5 Mobile / RWD helper classes 
-	
-	Tablet size 768px +
-		
-	Desktop size 1024px +
-		
- 
- */
-
-
-
-
-/**
  * 0 Misc
  */
- 
-@import "misc-fonts";
-@import "misc-reset";
-@import "misc-helpers-forms";
+
+@import "config/variables";
+@import "config/mixins";
+@import "config/fonts";
+@import "config/reset";
 
 /**
- *	2 Helper classes / Common modules
+ *	2 Helper classes
  */
-@import "misc-helpers";
+@import "helpers/media";
+@import "helpers/a11y";
+@import "helpers/forms";
+@import "helpers/wordpress";
+@import "helpers/lists";
+@import "helpers/social";
+@import "config/typography";
 
 /**
- *	3 Layout
+ *	3 Common modules
  */
-@import "site-header";
-@import "site-nav";
-@import "site-content";
-@import "site-footer";
-
+@import "modules/site-header";
+@import "modules/site-nav";
+@import "modules/site-content";
+@import "modules/site-footer";
 
 /**
- *	4 Individual pages/sections
+ *	4 Mobile / RWD helper classes
  */
- 
-/**
- *	5 Mobile / RWD helper classes
- */
-@import "misc-helpers-responsive"; 
-
+@import "helpers/responsive";

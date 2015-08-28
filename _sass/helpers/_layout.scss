@@ -1,0 +1,71 @@
+/**
+ * Layout helper classes
+	Image replacement classes / show/hide classes
+	WordPress specific classes
+		Image alignment
+		Captions
+		Post classes
+		Post navigation
+		Pagenavi plugin styles (use the WP-Pagenavi plugin it's ace)
+	Search form
+	List classes
+	Social icons (uses symoblset.com - get a licence - it's really cheap. Be nice, do it)
+ */
+.group, 
+.field{
+	clear: both;
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+.field{
+	margin: 0 0 20px;
+}
+
+.inner{
+	margin: 0 auto;
+	position: relative;
+	width: 98%;
+}
+
+
+@media screen and (min-width: 768px) {
+
+	.inner{
+		width: 690px;
+	}	
+	
+}
+
+@media screen and (min-width: 1024px) {
+
+	.inner{
+		width: 1020px;
+	}	
+	
+}
+
+.column{
+	float: left;
+	position: relative;
+	width: 50%;
+}
+
+.decoration{
+	display: block;
+	position: absolute;
+}
+
+/* Clearfix */
+.clearfix:before, 
+.clearfix:after { 
+	content: "\0020"; 
+	display: block; 
+	height: 0; 
+	overflow: hidden; 
+}
+
+.clearfix:after { clear: both; }
+
+.clearfix { zoom: 1; }  

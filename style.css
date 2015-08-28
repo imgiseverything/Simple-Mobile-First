@@ -6,33 +6,6 @@ Author: Phil Thompson
 Author URI: http://imgiseverything.co.uk/
 */
 /**
- *
- 	----------
-	CONTENTS
-	----------
-
-	Mobile first
-		
-		0 Misc
-			Webfonts
-		1 Resets/Normalise
-			Body
-			Links
-			Headings
-			Block level elements: p, ul, ol, dl, etc
-			Forms (default)
-		2 Helper classes / Common modules
-		3 Layout/structure (e.g. header, footer, etc)
-		4 Individual sections/pages - use a class on body tag for this e.g. body.home .parent .child{ etc: etc; }
-		5 Mobile / RWD helper classes 
-	
-	Tablet size 768px +
-		
-	Desktop size 1024px +
-		
- 
- */
-/**
  * 0 Misc
  */
 /**
@@ -104,7 +77,6 @@ em, i {
 body {
   background: #fff;
   color: #444;
-  font: 16px/1.3 sans-serif;
   margin: 0 auto;
   width: 96%; }
 
@@ -141,6 +113,89 @@ ul li, ol li {
 @media screen and (min-width: 1024px) {
   body {
     width: 1020px; } }
+/**
+ *	2 Helper classes
+ */
+/**
+ * Media object: hearts to @stubbornella
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ */
+.media {
+  text-align: left; }
+
+.media,
+.media__supporting {
+  overflow: hidden;
+  _overflow: visible;
+  zoom: 1; }
+
+.media__object {
+  float: left;
+  margin-right: 10px; }
+  .media__object img {
+    display: block; }
+
+.media__object--alt {
+  float: right;
+  margin-left: 10px;
+  margin-right: 0; }
+
+.media__object--flush {
+  margin-left: 0;
+  margin-right: 0; }
+
+.media__object--block {
+  float: none;
+  margin-left: auto;
+  margin-right: auto; }
+
+/**
+ * Accessibility (a11y) related classes
+ */
+/**
+ * Image replacement classes
+ */
+.ir {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0;
+  direction: ltr;
+  display: block;
+  overflow: hidden;
+  text-align: left;
+  text-indent: -999em;
+  *line-height: 0; }
+
+.ir br {
+  display: none; }
+
+.js .js-hidden {
+  display: none;
+  visibility: hidden; }
+
+/* Hidden but visible to screenreaders */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+
+.invisible {
+  visibility: hidden; }
+
 /* Forms */
 form {
   background: #f5f5f5;
@@ -218,112 +273,7 @@ input[type="submit"]:hover,
 
 /* Tablet */
 /**
- *	2 Helper classes / Common modules
- */
-/**
- * Layout helper classes
-	Image replacement classes / show/hide classes
-	WordPress specific classes
-		Image alignment
-		Captions
-		Post classes
-		Post navigation
-		Pagenavi plugin styles (use the WP-Pagenavi plugin it's ace)
-	Search form
-	List classes
-	Social icons (uses symoblset.com - get a licence - it's really cheap. Be nice, do it)
- */
-.group,
-.field {
-  clear: both;
-  float: left;
-  position: relative;
-  width: 100%; }
-
-.field {
-  margin: 0 0 20px; }
-
-.inner {
-  margin: 0 auto;
-  position: relative;
-  width: 98%; }
-
-@media screen and (min-width: 768px) {
-  .inner {
-    width: 690px; } }
-@media screen and (min-width: 1024px) {
-  .inner {
-    width: 1020px; } }
-.column {
-  float: left;
-  position: relative;
-  width: 50%; }
-
-.decoration {
-  display: block;
-  position: absolute; }
-
-/* Clearfix */
-.clearfix:before,
-.clearfix:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  overflow: hidden; }
-
-.clearfix:after {
-  clear: both; }
-
-.clearfix {
-  zoom: 1; }
-
-/**
- * Image replacement classes / show/hide classes
- */
-.ir {
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: 0;
-  direction: ltr;
-  display: block;
-  overflow: hidden;
-  text-align: left;
-  text-indent: -999em;
-  *line-height: 0; }
-
-.ir br {
-  display: none; }
-
-.hidden,
-.js-hidden {
-  display: none;
-  visibility: hidden; }
-
-/* Hidden but visible to screenreaders */
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px; }
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto; }
-
-.invisible {
-  visibility: hidden; }
-
-/**
- * WordPress specific classes 
+ * WordPress specific classes
  */
 /* Image alignment */
 .alignleft {
@@ -436,7 +386,9 @@ form.search button {
   form.search button {
     display: inline-block;
     width: 35%; } }
-/* Lists */
+/**
+ * Lists
+ */
 .block-list li {
   list-style: none;
   margin-left: 0; }
@@ -453,6 +405,10 @@ form.search button {
   display: block;
   margin: 0 auto; }
 
+/* Sidebar menu */
+.sidebar .nav li ul {
+  padding: 5px 10px; }
+
 /**
  * Social icons
  */
@@ -464,20 +420,24 @@ form.search button {
 .social-icon {
   color: blue;
   display: block;
-  font-family: "SSSocialRegular";
+  font-family: 'SSSocialRegular';
   height: 20px;
   overflow: hidden;
   text-decoration: none;
   width: 20px; }
 
-/* Sidebar menu */
-.sidebar .nav li ul {
-  padding: 5px 10px; }
+/**
+ * Typography
+ * Define font sizes, families, line-height, letter-spacing etc for all
+ * different screen sizes in here so it's easier to manage a RWB build
+ */
+body {
+  font: 16px/1.3 sans-serif; }
 
 /**
- *	3 Layout
+ *	3 Common modules
  */
-.site-header .logo {
+.site-header__logo {
   background: transparent url(images/logo.png) 0 0 no-repeat;
   font-weight: normal;
   font-size: 36px;
@@ -486,7 +446,7 @@ form.search button {
   max-width: 100%;
   padding: 0;
   width: 300px; }
-  .site-header .logo a {
+  .site-header__logo a {
     color: inherit;
     display: block;
     text-decoration: none; }
@@ -546,7 +506,6 @@ form.search button {
     background: #f5f5f5;
     color: #000; }
 
-/* Mobile */
 /* Tablet */
 @media screen and (min-width: 569px) {
   .site-nav-button {
@@ -562,27 +521,29 @@ form.search button {
       margin: 0 2px 0 0; }
 
   /* Show children on hover */
-  .site-nav ul ul {
+  .site-nav ul {
     display: none; }
 
   .site-nav li:hover > ul {
     display: block;
     left: 0; }
 
-  .site-nav ul ul {
+  .site-nav ul {
     font-size: 90%;
     position: absolute;
     top: auto;
     z-index: 5;
     width: 300px;
     /* magic number <- make ems? or rems? */ }
+    .site-nav ul li {
+      clear: both; }
 
   .site-nav ul.children li ul.children {
     left: 300px;
     /* magic number <- make ems? or rems? */
     top: 0; }
 
-  .site-nav ul ul > li:first-child {
+  .site-nav ul > li:first-child {
     border-top: none; } }
 /* Desktop */
 /* Global site content */
@@ -666,10 +627,7 @@ form.search button {
       margin-right: 0; } }
 /* Desktop */
 /**
- *	4 Individual pages/sections
- */
-/**
- *	5 Mobile / RWD helper classes
+ *	4 Mobile / RWD helper classes
  */
 /**
  *	5 Mobile/RWD helper classes

@@ -43,3 +43,4 @@ Thumbs.db
 fonts/ss-social/*
 .sass-cache/*
 node_modules/*
+_grunt/node_modules/*

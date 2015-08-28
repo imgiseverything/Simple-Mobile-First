@@ -1,0 +1,20 @@
+{
+  "name": "simple-mobile-first",
+  "version": "0.1.0",
+  "author": "Phil Thompson",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-cssmin": "~0.13.0",
+    "grunt-contrib-imagemin": "~0.9.4",
+    "grunt-contrib-sass": "~0.9.2",
+    "grunt-contrib-uglify": "~0.9.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-jslint": "~1.1.5",
+    "grunt-lintspaces": "~0.7.0",
+    "grunt-postcss": "^0.6.0",
+    "grunt-svgmin": "2",
+    "matchdep": "~0.3.0"
+  }
+}

@@ -15,7 +15,7 @@ window.WordPressTheme = window.WordPressTheme || {};
 
 	"use strict";
 
-	window.WordPressTheme = {
+	window.WordPressTheme.Main = {
 
 		config: {
 			// Not used
@@ -102,6 +102,6 @@ window.WordPressTheme = window.WordPressTheme || {};
 
 	};
 	
-	window.WordPressTheme.init();
+	window.WordPressTheme.Main.init();
 
 }(jQuery));

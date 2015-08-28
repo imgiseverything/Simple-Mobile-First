@@ -26,10 +26,10 @@
 		// jQuery
 		wp_deregister_script('jquery');
 
-		wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', null, null, true);
+		wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', null, null, true);
 		
 		// Site specific scripts
-		wp_enqueue_script('global', get_template_directory_uri() . '/js/main.js', array('jquery'), null, $load_at_bottom);
+		wp_enqueue_script('global', get_template_directory_uri() . '/assets/js/simple-mobile-first.js', array('jquery'), null, $load_at_bottom);
 		
 		// End JavaScript files
 
@@ -43,7 +43,7 @@
 	
 		<div role="banner" class="group">
 			<?php $heading_tag = (is_home() || is_front_page()) ? 'h1' : 'div'; ?>
-			<<?php echo $heading_tag; ?> class="logo ir">
+			<<?php echo $heading_tag; ?> class="site-header__logo ir">
 				<a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"><?php bloginfo('name'); ?></a>
 			</<?php echo $heading_tag; ?>>
 		</div>

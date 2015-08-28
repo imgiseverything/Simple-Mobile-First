@@ -1,0 +1,39 @@
+.site-header{
+	
+}
+
+	
+.site-header__logo{
+	background: transparent url(images/logo.png) 0 0 no-repeat;
+	font-weight: normal;
+	font-size: 36px;
+	height: 150px;
+	margin: 0;
+	max-width: 100%;
+	padding: 0;
+	width: 300px;
+	
+	a{
+		color: inherit;
+		display: block;
+		text-decoration: none;
+	}
+
+}
+
+
+
+/* Mobile (landscape) */
+@media screen and (min-width: 568px) {
+
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+
+}
