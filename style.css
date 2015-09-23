@@ -9,22 +9,31 @@ Author URI: http://imgiseverything.co.uk/
  * 0 Misc
  */
 /**
- * Webfonts
+ * Variables
  */
 /**
- * Social icons font
+ * Colours
  */
-@font-face {
-  font-family: "SSSocialRegular";
-  src: url("fonts/ss-social/ss-social-regular.eot");
-  src: url("fonts/ss-social/ss-social-regular.eot?#iefix") format("embedded-opentype"), url("fonts/ss-social/ss-social-regular.woff") format("woff"), url("fonts/ss-social/ss-social-regular.ttf") format("truetype"), url("fonts/ss-social/ss-social-regular.svg#SSSocialRegular") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+/**
+ * Fonts
+ */
+/**
+ * Breakpoints
+ */
+/**
+ * Dimensions
+ */
+/**
+ * Webfonts
+ */
 /* Box sizing - reset to a nicer understanding of the box model */
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+html {
   box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
 
 /**
  *	1 Resets/normalise
@@ -195,6 +204,57 @@ ul li, ol li {
 
 .invisible {
   visibility: hidden; }
+
+/**
+ * Layout helper classes
+ */
+.group,
+.form-field {
+  clear: both;
+  float: left;
+  position: relative;
+  width: 100%; }
+
+.form-field {
+  margin: 0 0 20px; }
+
+.inner {
+  margin: 0 auto;
+  position: relative;
+  width: 98%; }
+  @media screen and (min-width: 1024px) {
+    .inner {
+      width: 1280px; } }
+
+.column {
+  float: left;
+  position: relative;
+  width: 50%; }
+
+.decoration {
+  display: block;
+  position: absolute; }
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after {
+  clear: both; }
 
 /* Forms */
 form {
@@ -425,6 +485,10 @@ form.search button {
   overflow: hidden;
   text-decoration: none;
   width: 20px; }
+  .social-icon svg {
+    display: block;
+    height: 20px;
+    width: 20px; }
 
 /**
  * Typography
@@ -438,71 +502,95 @@ body {
  *	3 Common modules
  */
 .site-header__logo {
-  background: transparent url(images/logo.png) 0 0 no-repeat;
-  font-weight: normal;
-  font-size: 36px;
-  height: 150px;
-  margin: 0;
+  height: 44px;
+  margin: 20px auto;
   max-width: 100%;
   padding: 0;
-  width: 300px; }
+  width: 166px; }
+  @media screen and (min-width: 1024px) {
+    .site-header__logo {
+      margin-left: 0;
+      margin-right: 0; } }
   .site-header__logo a {
     color: inherit;
     display: block;
     text-decoration: none; }
+  .site-header__logo svg {
+    display: block; }
 
-/* Mobile (landscape) */
-/* Tablet */
-/* Desktop */
 /* Global site nav */
 .site-nav-button {
   cursor: button; }
 
 .site-nav {
   height: 0;
-  overflow: hidden; }
+  margin: 0;
+  overflow: hidden;
+  padding: 0; }
   .site-nav-active .site-nav {
     height: auto; }
   .site-nav ul {
     margin: 0;
     padding: 0; }
-  .site-nav li {
-    border-top: 1px solid #999;
-    display: block;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative; }
-  .site-nav a {
-    background: #dbdbdb;
-    color: #333;
-    display: block;
-    padding: 10px;
-    text-decoration: none; }
-    .site-nav a:hover {
-      background: #f5f5f5; }
+
+.site-nav__item,
+.page_item {
+  border-top: 1px solid #999;
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative; }
+
+.site-nav__link,
+.page_item a {
+  background-color: #dbdbdb;
+  color: #000;
+  display: block;
+  padding: 10px;
+  text-decoration: none; }
+  .site-nav__link:hover,
+  .page_item a:hover {
+    background-color: #f5f5f5; }
+  .site-nav__link:visited,
+  .page_item a:visited {
+    color: currentColor; }
 
 /* Highlight active page */
-.site-nav ul > li.current_page_item > a,
-.site-nav ul > li.current_menu_item > a {
-  background: #888;
+.current_page_item > a,
+.current_menu_item > a {
+  background-color: #888;
   color: #fff; }
+  .current_page_item > a:visited,
+  .current_menu_item > a:visited {
+    color: #fff; }
 
 /* Highlight active parent */
-.site-nav ul > li.current_page_parent > a,
-.site-nav ul > li.current_page_ancestor > a,
-.site-nav ul > li.current_menu_parent > a,
-.site-nav ul > li.current_menu_ancestor > a {
-  background: #aaa;
-  color: #fff; }
+.current_page_parent > a,
+.current_page_ancestor > a,
+.current_menu_parent > a,
+.current_menu_ancestor > a {
+  background-color: #aaa; }
+  .current_page_parent > a:visited,
+  .current_page_ancestor > a:visited,
+  .current_menu_parent > a:visited,
+  .current_menu_ancestor > a:visited {
+    color: #fff; }
 
-/* Sub-nav */
-.site-nav ul ul {
+/**
+	* Sub-nav
+	* wp_nav_menu uses .sub-menu whereas
+	* wp_page_menu uses .children
+	*/
+.sub-menu,
+.children {
   font-size: 90%; }
-  .site-nav ul ul li {
+  .sub-menu li,
+  .children li {
     border-top: 1px solid #dbdbdb;
     width: 100%; }
-  .site-nav ul ul a:hover {
+  .sub-menu a:hover,
+  .children a:hover {
     background: #f5f5f5;
     color: #000; }
 
@@ -521,31 +609,35 @@ body {
       margin: 0 2px 0 0; }
 
   /* Show children on hover */
-  .site-nav ul {
+  .sub-menu,
+  .children {
     display: none; }
 
   .site-nav li:hover > ul {
     display: block;
     left: 0; }
 
-  .site-nav ul {
+  .sub-menu,
+  .children {
     font-size: 90%;
     position: absolute;
     top: auto;
     z-index: 5;
     width: 300px;
     /* magic number <- make ems? or rems? */ }
-    .site-nav ul li {
+    .sub-menu li,
+    .children li {
       clear: both; }
 
-  .site-nav ul.children li ul.children {
+  .sub-menu .sub-menu,
+  .children .children {
     left: 300px;
     /* magic number <- make ems? or rems? */
     top: 0; }
 
-  .site-nav ul > li:first-child {
+  .sub-menu > li:first-child,
+  .children > li:first-child {
     border-top: none; } }
-/* Desktop */
 /* Global site content */
 .primary,
 .sidebar,
@@ -605,7 +697,6 @@ body {
   .site-footer li ul {
     display: none; }
 
-/* Mobile (landscape) */
 /* Tablet */
 @media screen and (min-width: 768px) {
   .site-footer {
@@ -617,15 +708,15 @@ body {
     .site-footer .footer-section + .footer-section {
       float: left;
       text-align: left; }
-    .site-footer .menu,
-    .site-footer ul {
-      display: inline-block;
-      vertical-align: top; }
+    .site-footer__nav,
     .site-footer .social-list {
+      display: inline-block;
+      vertical-align: middle; }
+    .site-footer .social-list {
+      margin-left: .5em;
       margin-top: 0; }
     .site-footer li:last-child {
       margin-right: 0; } }
-/* Desktop */
 /**
  *	4 Mobile / RWD helper classes
  */

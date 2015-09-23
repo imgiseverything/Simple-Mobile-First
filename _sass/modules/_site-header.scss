@@ -2,38 +2,25 @@
 	
 }
 
-	
 .site-header__logo{
-	background: transparent url(images/logo.png) 0 0 no-repeat;
-	font-weight: normal;
-	font-size: 36px;
-	height: 150px;
-	margin: 0;
+	height: 44px;
+	margin: 20px auto;
 	max-width: 100%;
 	padding: 0;
-	width: 300px;
-	
+	width: 166px;
+
+	@media screen and (min-width: $bp-desktop) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
 	a{
 		color: inherit;
 		display: block;
 		text-decoration: none;
 	}
 
-}
-
-
-
-/* Mobile (landscape) */
-@media screen and (min-width: 568px) {
-
-}
-
-/* Tablet */
-@media screen and (min-width: 768px) {
-
-}
-
-/* Desktop */
-@media screen and (min-width: 1024px) {
-
+	svg{
+		display: block;	
+	}
 }

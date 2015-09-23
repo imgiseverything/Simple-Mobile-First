@@ -15,11 +15,9 @@ add_filter('use_default_gallery_style', '__return_false');
  */
 add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 
-
 if(function_exists('acf_add_options_page')){
 	acf_add_options_page();
 }
-
 
 // Refer to Posts as News
 function img_change_post_label() {
@@ -52,30 +50,34 @@ function img_change_post_object() {
 add_action( 'admin_menu', 'img_change_post_label' );
 add_action( 'init', 'img_change_post_object' );
 
-
-
 // Change Next/Previous links
 add_filter('next_posts_link_attributes', 'posts_link_attributes_next');
 add_filter('previous_posts_link_attributes', 'posts_link_attributes_previous');
 
 function posts_link_attributes_next() {
-   return 'class="news-navigation__button news-navigation__button--next"';
+	return 'class="news-navigation__button news-navigation__button--next"';
 }
 
 function posts_link_attributes_previous() {
-   return 'class="news-navigation__button news-navigation__button--previous"';
+	return 'class="news-navigation__button news-navigation__button--previous"';
 }
 
 // Add class to wp_nav_menu <li> tags
-add_filter('nav_menu_css_class' , 'my_nav_special_class' , 10 , 2);
-function my_nav_special_class($classes, $item){
-   $classes[] = 'site-nav__item';
-   return $classes;
+add_filter('nav_menu_css_class' , 'my_nav_special_class' , 10 , 3);
+function my_nav_special_class($classes, $item, $args){
+	if(empty($args->menu_class)){
+		$args->menu_class = 'site-nav';
+	}
+	$classes[] = $args->menu_class . '__item';
+	return $classes;
 }
 
 // Add classes to wp_nav_menu <a> tags
-add_filter('nav_menu_link_attributes' , 'my_nav_special_attribute' , 10 , 2);
-function my_nav_special_attribute($attributes, $item){
-   $attributes['class'] = 'site-nav__link';
-   return $attributes;
+add_filter('nav_menu_link_attributes' , 'my_nav_special_attribute' , 10 , 3);
+function my_nav_special_attribute($attributes, $item, $args){
+	if(empty($args->menu_class)){
+		$args->menu_class = 'site-nav';
+	}
+	$attributes['class'] = $args->menu_class . '__link';
+	return $attributes;
 }

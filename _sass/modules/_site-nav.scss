@@ -5,7 +5,9 @@
 
 .site-nav{
 	height: 0;
+	margin: 0;
 	overflow: hidden;
+	padding: 0;
 
 	.site-nav-active &{
 		height: auto;
@@ -15,50 +17,67 @@
 		margin: 0;
 		padding: 0;
 	}
+}
 
-	li{
-		border-top: 1px solid #999;
-		display: block;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		position: relative;
+.site-nav__item,
+.page_item{
+	border-top: 1px solid #999;
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.site-nav__link,
+.page_item a{
+	background-color: #dbdbdb;
+	color: $c-black;
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+
+	&:hover{
+		background-color: #f5f5f5;
 	}
-	
-	a{
-		background: #dbdbdb;
-		color: #333;
-		display: block;
-		padding: 10px;
-		text-decoration: none;
-		
-		&:hover{
-			background: #f5f5f5;
-		}
+
+	&:visited{
+		color: currentColor;
 	}
-}		
+}
 
 /* Highlight active page */
-.site-nav ul > li.current_page_item > a,
-.site-nav ul > li.current_menu_item > a{
-	background: #888;
-	color: #fff;
-}
+.current_page_item > a,
+.current_menu_item > a{
+	background-color: #888;
+	color: $c-white;
 
+	&:visited{
+		color: $c-white;
+	}
+}
 
 /* Highlight active parent */
-.site-nav ul > li.current_page_parent > a,
-.site-nav ul > li.current_page_ancestor > a,
-.site-nav ul > li.current_menu_parent > a,
-.site-nav ul > li.current_menu_ancestor > a{
-	background: #aaa;
-	color: #fff;
+.current_page_parent > a,
+.current_page_ancestor > a,
+.current_menu_parent > a,
+.current_menu_ancestor > a{
+	background-color: #aaa;
+
+	&:visited{
+		color: $c-white
+	}
 }
 
-/* Sub-nav */
-.site-nav ul ul{
+/**
+	* Sub-nav
+	* wp_nav_menu uses .sub-menu whereas
+	* wp_page_menu uses .children
+	*/
+.sub-menu,
+.children{
 	font-size: 90%;
-	
+
 	li{
 		border-top: 1px solid #dbdbdb;
 		width: 100%;
@@ -67,64 +86,62 @@
 	a:hover{
 		background: #f5f5f5;
 		color: #000;
-	}	
+	}
 }
 
 /* Tablet */
 @media screen and (min-width: 569px) {
-	
-	
+
 	.site-nav-button{
-		display: none;	
+		display: none;
 	}
 
 	/* On desktop/tablet the nav is horizontal with children as drop downs (using CSS) */
 	.site-nav{
 		height: auto !important;
 		overflow: visible;
-		
+
 		li{
 			border-top: none;
 			display: inline-block;
 			margin: 0 2px 0 0;
 		}
 	}
-	
+
 	/* Show children on hover */
-	.site-nav ul{
+	.sub-menu,
+	.children{
 		display: none;
 	}
-	
+
 	.site-nav li:hover > ul{
 		display: block;
 		left: 0;
 	}
-	
-	.site-nav ul{
+
+	.sub-menu,
+	.children{
 		font-size: 90%;
 		position: absolute;
 		top: auto;
 		z-index: 5;
 		width: 300px; /* magic number <- make ems? or rems? */
-		
+
 		li{
 			clear: both;	
 		}
-		
 	}
-	
-	.site-nav ul.children li ul.children{
+
+	.sub-menu .sub-menu,
+	.children .children{
 		left: 300px; /* magic number <- make ems? or rems? */
 		top: 0;
 	}
-				
-	.site-nav ul > li:first-child{
-		border-top: none;
+
+	.sub-menu,
+	.children{
+		> li:first-child{
+			border-top: none;
+		}
 	}
-}
-
-/* Desktop */
-@media screen and (min-width: 1024px) {
-
-
 }

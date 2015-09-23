@@ -43,14 +43,13 @@
 	
 		<div role="banner" class="group">
 			<?php $heading_tag = (is_home() || is_front_page()) ? 'h1' : 'div'; ?>
-			<<?php echo $heading_tag; ?> class="site-header__logo ir">
-				<a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"><?php bloginfo('name'); ?></a>
+			<<?php echo $heading_tag; ?> class="site-header__logo">
+				<a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"><?php include('assets/images/logo.svg'); ?> <span class="visuallyhidden"><?php bloginfo('name'); ?></span></a>
 			</<?php echo $heading_tag; ?>>
 		</div>
 	
 		<nav role="navigation" class="group">
-			<div class="mobile-only button site-nav-button" title="Show/hide menu">Menu</div>
-			<?php wp_nav_menu(array( 'container' => '', 'container_class' => '', 'menu_class' => 'site-nav', 'theme_location' => 'primary')); ?>
+			<?php include('partials/nav-header.php'); ?>
 		</nav>
 			
 	</header>

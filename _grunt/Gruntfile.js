@@ -18,10 +18,10 @@ module.exports = function(grunt) {
 					'!../assets/js/plugins/jquery-*.js',
 					'!../assets/js/plugins/respond.js',
 					'../assets/js/**/*.js',
-					'!js/<%= pkg.name %>.js',
-					'!js/<%= pkg.name %>.min.js'
+					'!../assets/js/<%= pkg.name %>.js',
+					'!../assets/js/<%= pkg.name %>.min.js'
 				],
-				dest: 'js/<%= pkg.name %>.js'
+				dest: '../assets/js/<%= pkg.name %>.js'
 			}
 		},
 
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 				]
 			},
 			dist: {
-				src: '../css/*.css'
+				src: '../*.css'
 			}
 		},
 
@@ -190,7 +190,7 @@ module.exports = function(grunt) {
 					'../_sass/*.scss',
 					'../_sass/**/*.scss',
 				],
-				tasks: ['sass', 'autoprefixer',	'cssmin'],
+				tasks: ['sass', 'postcss', 'cssmin'],
 				options: {
 					nospawn: true
 				}
@@ -219,7 +219,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('autoprefixer-core');
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-concat');

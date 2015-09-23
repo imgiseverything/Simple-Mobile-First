@@ -44,3 +44,14 @@ fonts/ss-social/*
 .sass-cache/*
 node_modules/*
 _grunt/node_modules/*
+_layout.scssc
+_site-footer.scssc
+_site-header.scssc
+_site-nav.scssc
+style.scssc
+_reset.scssc
+_fonts.scssc
+_variables.scssc
+_variables.scss
+_typography.scssc
+_social.scssc

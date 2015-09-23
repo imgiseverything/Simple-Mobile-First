@@ -1,9 +1,12 @@
 /* Box sizing - reset to a nicer understanding of the box model */
-
-*{
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+html{
 	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after{
+	box-sizing: inherit;
 }
 
 /**

@@ -1,25 +1,15 @@
 /**
  * Layout helper classes
-	Image replacement classes / show/hide classes
-	WordPress specific classes
-		Image alignment
-		Captions
-		Post classes
-		Post navigation
-		Pagenavi plugin styles (use the WP-Pagenavi plugin it's ace)
-	Search form
-	List classes
-	Social icons (uses symoblset.com - get a licence - it's really cheap. Be nice, do it)
  */
 .group, 
-.field{
+.form-field{
 	clear: both;
 	float: left;
 	position: relative;
 	width: 100%;
 }
 
-.field{
+.form-field{
 	margin: 0 0 20px;
 }
 
@@ -27,23 +17,10 @@
 	margin: 0 auto;
 	position: relative;
 	width: 98%;
-}
 
-
-@media screen and (min-width: 768px) {
-
-	.inner{
-		width: 690px;
-	}	
-	
-}
-
-@media screen and (min-width: 1024px) {
-
-	.inner{
-		width: 1020px;
-	}	
-	
+	@media screen and (min-width: $bp-desktop) {
+		width: $d-site-width;
+	}
 }
 
 .column{
@@ -57,15 +34,24 @@
 	position: absolute;
 }
 
-/* Clearfix */
-.clearfix:before, 
-.clearfix:after { 
-	content: "\0020"; 
-	display: block; 
-	height: 0; 
-	overflow: hidden; 
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
 }
 
-.clearfix:after { clear: both; }
-
-.clearfix { zoom: 1; }  
+.clearfix:after {
+	clear: both;
+}

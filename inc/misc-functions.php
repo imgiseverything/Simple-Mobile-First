@@ -133,40 +133,41 @@ function move_admin_bar() {
 	
 	echo '
 	<style>
-	html.js, html.no-js{ margin-top: 0 !important; }
+	html.js, html.no-js{
+		margin-top: 0 !important;
+	}
 	body.admin-bar{
-        padding-bottom: 46px;
-    }
-    
-    #wpadminbar {
-        top: auto !important;
-        bottom: 0;
-    }
-    #wpadminbar .quicklinks>ul>li {
-        position:relative;
-    }
-    #wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper {
-        bottom:46px;
-    }
-    
-    
-    @media screen and ( max-width: 782px ) {
-    
-    	body.admin-bar{
-	   	 padding-bottom: 46px;
-	   	}
-    	 #wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper
-    	 	bottom: 46px;
-    	 }
-    }
+		padding-bottom: 46px;
+	}
+	#wpadminbar {
+		bottom: 0;
+		top: auto !important;
+	}
+	#wpadminbar .quicklinks>ul>li{
+		position:relative;
+	}
+	#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper{
+		bottom:46px;
+	}
+	
+	@media screen and ( max-width: 782px ){
+		body.admin-bar{
+			padding-bottom: 46px;
+		}
+		#wpadminbar {
+			position: fixed;
+		}
+		#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper{
+			bottom: 46px;
+		}
+	}
 </style>';
     
 }
-// on frontend area
+
 if(is_admin_bar_showing()){
 	add_action('wp_head', 'move_admin_bar');
 }
-
 
 /**
  * Stop WordPress SEO making their metabox such a high priority.
