@@ -16,8 +16,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'!../assets/js/plugins/jquery-*.js',
-					'!../assets/js/plugins/respond.js',
-					'../assets/js/**/*.js',
+					'../assets/js/modules/*.js',
 					'!../assets/js/<%= pkg.name %>.js',
 					'!../assets/js/<%= pkg.name %>.min.js'
 				],
@@ -54,8 +53,8 @@ module.exports = function(grunt) {
 					predef: [
 						'jQuery',
 						'requestAnimationFrame',
-						'Modernizr',
-						'Hammer'
+						'throttle',
+						'debug'
 					]
 				},
 				options: {
@@ -67,7 +66,7 @@ module.exports = function(grunt) {
 		sass: {																 		// Task
 			dist: {														 		// Target
 				files: {													// Dictionary of files
-						'../style.css': '../_sass/style.scss'		 // 'destination': 'source'
+						'../assets/css/style.css': '../_sass/style.scss'		 // 'destination': 'source'
 				}
 			}
 		},
@@ -83,7 +82,7 @@ module.exports = function(grunt) {
 				]
 			},
 			dist: {
-				src: '../*.css'
+				src: '../assets/css/*.css'
 			}
 		},
 
@@ -91,7 +90,7 @@ module.exports = function(grunt) {
 		cssmin: {
 			combine: {
 				files: {
-					'../style.min.css': ['../style.css']
+					'../assets/css/style.min.css': ['../assets/css/style.css']
 				}
 			}
 		},
