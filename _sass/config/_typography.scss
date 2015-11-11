@@ -3,6 +3,41 @@
  * Define font sizes, families, line-height, letter-spacing etc for all
  * different screen sizes in here so it's easier to manage a RWB build
  */
-body{
+
+strong, b {
+	font-weight: normal;
+}
+
+em, i {
+	font-style: normal; 
+}
+
+body {
 	font: 16px/1.3 $f-body;
+}
+
+
+h1, h2, h3, h4, h5, h6, .h{
+	font-weight: bold;
+	padding: 20px 0 0;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3{
+	
+}
+
+h1,
+.h1{
+	
+}
+
+p, ul, ol, dl{
+	padding: 10px 0 0;
+}
+
+ul li, ol li{
+	margin-left: 2em;
+	padding-bottom: .25em;
 }

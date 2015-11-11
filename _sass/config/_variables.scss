@@ -1,24 +1,30 @@
 /**
  * Variables
+ * Repetitive values turned into Sass variables here
  */
  
 /**
  * Colours
+ * Prefixed with c-
  */
 $c-black: #000;
 $c-white: #fff;
+$c-link-colour: #63C;
  
 /**
  * Fonts
+ * Prefixed with f-
  */
 $f-body: sans-serif;
  
 /**
  * Breakpoints
+ * Prefixed with bp-
  */
 $bp-desktop: 1024px;
  
 /**
  * Dimensions
+ * Prefixed with d-
  */
 $d-site-width: 1280px;
