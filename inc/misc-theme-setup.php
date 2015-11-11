@@ -62,6 +62,14 @@ function posts_link_attributes_previous() {
 	return 'class="news-navigation__button news-navigation__button--previous"';
 }
 
+add_filter('next_post_link', 'post_link_attributes');
+add_filter('previous_post_link', 'post_link_attributes');
+ 
+function post_link_attributes($output) {
+	$code = 'class="news-navigation__button"';
+	return str_replace('<a href=', '<a ' . $code . ' href=', $output);
+}
+
 // Add class to wp_nav_menu <li> tags
 add_filter('nav_menu_css_class' , 'my_nav_special_class' , 10 , 3);
 function my_nav_special_class($classes, $item, $args){
@@ -69,6 +77,10 @@ function my_nav_special_class($classes, $item, $args){
 		$args->menu_class = 'site-nav';
 	}
 	$classes[] = $args->menu_class . '__item';
+	
+	$classes = str_replace(array('current_page_parent', 'current_page_ancestor'), $args->menu_class . '__item--parent', $classes);
+	$classes = str_replace('current-menu-item', $args->menu_class . '__item--active', $classes);
+	
 	return $classes;
 }
 
