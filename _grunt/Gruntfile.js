@@ -75,13 +75,11 @@ module.exports = function(grunt) {
 		// Add browser prefixes to CSS
 		postcss: {
 			options: {
-				map: true, // inline sourcemaps
-
+				map: true,
 				processors: [
-					require('autoprefixer-core')({
-						browsers: 'last 2 versions'
-					})/*, // add vendor prefixes
-					require('cssnano')() // minify the result */
+					require('autoprefixer')({
+						browsers: ['last 2 versions']
+					})
 				]
 			},
 			dist: {
