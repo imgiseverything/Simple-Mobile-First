@@ -4,8 +4,8 @@
  *
  * @package WordPress
  */
- 
- 
+
+
 $custom_fields = get_post_custom();
 //$tags = get_the_terms($post->ID, 'example_tags');
 
@@ -19,4 +19,4 @@ get_header(); ?>
 
 </div>
 <?php get_sidebar(); ?>
-<?php get_footer();
+<?php get_footer(); ?>

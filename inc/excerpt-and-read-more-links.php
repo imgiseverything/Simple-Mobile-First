@@ -5,7 +5,7 @@
  *	simple_mobile_first_continue_reading_link
  *	Returns a "Continue Reading" link for excerpts
  *	For accesibility this reads Continue Reading Post Title with Post Title
- *	wrapped in a span tag and a class which CSS defines will be read by screenreaders/search 
+ *	wrapped in a span tag and a class which CSS defines will be read by screenreaders/search
  *	engines but *won't* be visibly shown on the page
  *	@return string "Continue Reading" link
  */
@@ -26,6 +26,7 @@ function simple_mobile_first_continue_reading_link(){
 function simple_mobile_first_auto_excerpt_more($more){
 	return ' &hellip;' . simple_mobile_first_continue_reading_link();
 }
+
 add_filter( 'excerpt_more', 'simple_mobile_first_auto_excerpt_more' );
 
 /**
@@ -44,4 +45,5 @@ function simple_mobile_first_custom_excerpt_more($output){
 	}
 	return $output;
 }
+
 add_filter('get_the_excerpt', 'simple_mobile_first_custom_excerpt_more');

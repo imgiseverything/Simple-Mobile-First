@@ -5,11 +5,12 @@
  *	on the 'View All' Posts/Pages screens
  */
 
-// Remove Comments from Admin Area (remove this section of code if not needed)
-add_action('admin_menu', 'my_admin_menu');
+/** Remove Comments from Admin Area (remove this section of code if not needed) */
 function my_admin_menu() {
 	remove_menu_page('edit-comments.php');
 }
+
+add_action('admin_menu', 'my_admin_menu');
 
 function remove_pages_count_columns($defaults){
 	unset($defaults['comments']);
@@ -20,15 +21,11 @@ function remove_pages_count_columns($defaults){
 add_filter('manage_pages_columns', 'remove_pages_count_columns');
 add_filter('manage_posts_columns', 'remove_pages_count_columns');
 
-// End of Remove Comments from Admin Area code
-
-// Remove annoying "Robots Meta" columns that WP SEO puts in
+/** Remove annoying "Robots Meta" columns that WP SEO puts in */
 remove_filter('manage_page_posts_columns', array($wpseo_metabox, 'page_title_column_heading'), 10, 1);
 remove_filter('manage_post_posts_columns', array($wpseo_metabox, 'page_title_column_heading'), 10, 1);
 remove_action('manage_pages_custom_column', array($wpseo_metabox, 'page_title_column_content'), 10, 2);
 remove_action('manage_posts_custom_column', array($wpseo_metabox, 'page_title_column_content'), 10, 2);
-
-// 
 
 /**
  *	remove_WPSEO_columns

@@ -6,12 +6,11 @@
  * @see: https://codex.wordpress.org/TinyMCE_Custom_Styles
  */
 
-// This theme styles the visual editor with editor-style.css to match the theme style
+/** This theme styles the visual editor with editor-style.css to match the theme style */
 add_editor_style();
 
-// Edit first row of buttons
+/** Edit first row of buttons */
 function my_mce_buttons($buttons){
-	//print_r($buttons);
 	unset($buttons[2]); // strikethrough
 	unset($buttons[5]); // blockquote
 	unset($buttons[6]); // hr
@@ -24,7 +23,7 @@ function my_mce_buttons($buttons){
 
 add_filter('mce_buttons', 'my_mce_buttons');
 
-// Edit second row of buttons
+/** Edit second row of buttons */
 function my_mce_buttons_2($buttons){
 	//print_r($buttons);
 	unset($buttons[1]); // underline
@@ -38,7 +37,7 @@ function my_mce_buttons_2($buttons){
 
 add_filter('mce_buttons_2', 'my_mce_buttons_2');
 
-// Build custom styles drop-down
+/** Build custom styles drop-down */
 function my_mce_before_init_insert_formats($init_array){
 	// Define the style_formats array
 	$style_formats = array(

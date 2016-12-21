@@ -2,9 +2,8 @@
 /**
  * Register custom post types.
  */
-
 function registerCustomTypes(){
-   /* 
+   /*
    register_post_type('content_block', array(
         'labels' => array(
             'name'               => 'Content Blocks',
@@ -27,4 +26,5 @@ function registerCustomTypes(){
     ));
   */
 }
+
 add_action('init', 'registerCustomTypes');

@@ -8,20 +8,21 @@
  *	@param	array list of current classes
  *	@return	array list of current classes + new ones
  */
-add_filter('body_class', 'extend_body_class');
 function extend_body_class($classes) {
 
 	$url = str_replace(array($_SERVER['QUERY_STRING'], '?'), '', $_SERVER['REQUEST_URI']);
 	$url_parts = explode('/', $url);
-	
+
 	foreach($url_parts as $key){
 		if(!is_numeric($key) && strlen($key) > 0){
 			$classes[] = trim($key);
 		}
 	}
 
-	return $classes; 
+	return $classes;
 }
+
+add_filter('body_class', 'extend_body_class');
 
 /**
  *	is_ajax
@@ -32,15 +33,15 @@ function extend_body_class($classes) {
  */
 function is_ajax(){
 
-	$ajax = false;	
-	
+	$ajax = false;
+
 	if(
-		!empty($_SERVER['HTTP_X_REQUESTED_WITH']) 
+		!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
 		&& $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'
 	){
 		$ajax = true;
 	}
-	
+
 	return $ajax;
 }
 
@@ -57,11 +58,11 @@ function is_ajax(){
 function get_parameter($object, $key, $default = ''){
 
 	$value = $default;
-	
+
 	if(isset($object[$key])){
 		$value = $object[$key];
 	}
-	
+
 	return $value;
 }
 
@@ -81,15 +82,13 @@ function add_slug_class_to_menu_item($output){
 			$output = preg_replace('/menu-item-' . $mid . '">/', 'menu-item-' . $mid . ' menu-item-' . $slug. '">', $output, 1);
 		}
 	}
-	
+
 	$blogurl = str_replace('http://', '', get_bloginfo('siteurl'));
-	
+
 	$output = str_replace('menu-item-' . $blogurl, 'menu-item-home', $output);
 
 	return $output;
 }
-
-add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
 
 add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
 
@@ -106,8 +105,8 @@ function urlify($string){
 
 	$string = preg_replace("/[^A-Za-z0-9 ]/", '', trim($string));
 	$string = str_replace(array(" ", "_"), '-', $string);
-	$string = strtolower($string);	
-		
+	$string = strtolower($string);
+
 	return $string;
 }
 
@@ -129,8 +128,8 @@ function formatted_telephone_number($telephone_number){
  *	Jeez how annoying is that admin toolbar at the top of the page sometimes?
  *	This moves it to the bottom
  */
-function move_admin_bar() {
-	
+function move_admin_bar_to_bottom() {
+
 	echo '
 	<style>
 	html.js, html.no-js{
@@ -149,7 +148,7 @@ function move_admin_bar() {
 	#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper{
 		bottom:46px;
 	}
-	
+
 	@media screen and ( max-width: 782px ){
 		body.admin-bar{
 			padding-bottom: 46px;
@@ -162,41 +161,41 @@ function move_admin_bar() {
 		}
 	}
 </style>';
-    
+
 }
 
 if(is_admin_bar_showing()){
-	add_action('wp_head', 'move_admin_bar');
+	add_action('wp_head', 'move_admin_bar_to_bottom');
 }
 
 /**
  * Stop WordPress SEO making their metabox such a high priority.
  */
-add_filter('wpseo_metabox_prio','lower_wpseo_metabox', 10);
 function lower_wpseo_metabox($priority) {
 	$priority = 'low';
 	return $priority;
 }
+
+add_filter('wpseo_metabox_prio','lower_wpseo_metabox', 10);
 
 /**
  *	convert_wp_pagenavi_html_output
  *	make wp-pagenavi's (which is awesome btw), less than awesome HTML output more awesome
  *	@see http://calebserna.com/bootstrap-wordpress-pagination-wp-pagenavi/
  */
-//attach our function to the wp_pagenavi filter
-add_filter('wp_pagenavi', 'convert_wp_pagenavi_html_output', 10, 2);
 function convert_wp_pagenavi_html_output($html) {
-    $pagination = '';
-  
-    //wrap a's and span's in li's
-    $pagination = str_replace('<div', '', $html);
-    $pagination = str_replace("class='wp-pagenavi'>", '', $pagination);
-    $pagination = str_replace('<a', '<li><a', $pagination);
-    $pagination = str_replace('</a>', '</a></li>', $pagination);
-    $pagination = str_replace('<span', '<li><span', $pagination);  
-    $pagination = str_replace('</span>', '</span></li>', $pagination);
-    $pagination = str_replace('</div>', '', $pagination);
-  
-    return '<ul class="pagination">' . $pagination . '</ul>';      
+	$pagination = '';
+
+	// wrap a's and span's in li's
+	$pagination = str_replace('<div', '', $html);
+	$pagination = str_replace("class='wp-pagenavi'>", '', $pagination);
+	$pagination = str_replace('<a', '<li><a', $pagination);
+	$pagination = str_replace('</a>', '</a></li>', $pagination);
+	$pagination = str_replace('<span', '<li><span', $pagination);
+	$pagination = str_replace('</span>', '</span></li>', $pagination);
+	$pagination = str_replace('</div>', '', $pagination);
+
+	return '<ul class="pagination">' . $pagination . '</ul>';
 }
 
+add_filter('wp_pagenavi', 'convert_wp_pagenavi_html_output', 10, 2);
