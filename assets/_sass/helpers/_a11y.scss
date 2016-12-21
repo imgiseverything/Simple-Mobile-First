@@ -1,7 +1,7 @@
 /**
  * Accessibility (a11y) related classes
  */
- 
+
 /**
  * Image replacement classes
  */
@@ -28,7 +28,8 @@
 
 
 /* Hidden but visible to screenreaders */
-.visuallyhidden{
+.visuallyhidden,
+.screen-reader-text{
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;

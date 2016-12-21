@@ -39,7 +39,7 @@
 			<div class="entry-content">
 				<?php the_content( 'Continue reading <span>&gt;</span>' ); ?>
 			</div>
-	
+
 			<div class="entry-utility">
 				<?php if ( count( get_the_category() ) ) : ?>
 					<span class="cat-links">
@@ -55,21 +55,20 @@
 					</span>
 				<?php endif; ?>
 			</div>
-	<?php endif; ?>	
+	<?php endif; ?>
 		</div>
 
 		<?php comments_template( '', true ); ?>
 
 <?php endwhile; // End the loop. Whew. ?>
 
-<?php 
-	/* Display navigation to next/previous pages when applicable */
-	if(function_exists('wp_pagenavi')): 
-		wp_pagenavi();
-	elseif (  $wp_query->max_num_pages > 1 ) : 
+<?php
+		// Previous/next page navigation.
+		// Not make sure your CSS hides the class .screen-reader-text from
+		// view (but not screen-readers)
+		the_posts_pagination( array(
+			'prev_text'          => 'Previous page',
+			'next_text'          => 'Next page',
+			'before_page_number' => '<span class="meta-nav screen-reader-text">Page </span>',
+		) );
 ?>
-	<div class="group navigation">
-		<div class="column nav-previous"><?php next_posts_link('<span>&lt;</span> Older posts'); ?></div>
-		<div class="column nav-next"><?php previous_posts_link('Newer posts <span>&gt;</span>'); ?></div>
-	</div>
-<?php endif; ?>
