@@ -1,13 +1,5 @@
-/*
-Theme Name: Simple Mobile First
-Theme URI: 
-Description: A bare-bones mobile-first WordPress theme
-Author: Phil Thompson
-Author URI: http://imgiseverything.co.uk/
-*/
-
 /**
- * 0 Misc
+ * Misc
  */
 
 @import "config/variables";
@@ -16,20 +8,21 @@ Author URI: http://imgiseverything.co.uk/
 @import "config/reset";
 
 /**
- *	2 Helper classes
+ *	Helper classes
  */
 @import "helpers/links";
 @import "helpers/media";
 @import "helpers/a11y";
 @import "helpers/layout";
 @import "helpers/forms";
+@import "helpers/buttons";
 @import "helpers/wordpress";
 @import "helpers/lists";
 @import "helpers/social";
 @import "config/typography";
 
 /**
- *	3 Common modules
+ *	Common modules
  */
 @import "modules/site-header";
 @import "modules/site-nav";
@@ -37,6 +30,6 @@ Author URI: http://imgiseverything.co.uk/
 @import "modules/site-footer";
 
 /**
- *	4 Mobile / RWD helper classes
+ *	Mobile / RWD helper classes
  */
 @import "helpers/responsive";

@@ -1,7 +1,7 @@
 <?php
-
-// This theme styles the visual editor with editor-style.css to match the theme style.
-add_editor_style();
+/**
+ * Theme set-up scripts
+ */
 
 // Add default posts and comments RSS feed links to head
 add_theme_support('automatic-feed-links');
@@ -19,36 +19,37 @@ if(function_exists('acf_add_options_page')){
 	acf_add_options_page();
 }
 
-// Refer to Posts as News
+// Refer to Posts as News (as this makes more sense to people)
 function img_change_post_label() {
-    global $menu;
-    global $submenu;
-    $menu[5][0] = 'News';
-    $submenu['edit.php'][5][0] = 'News';
-    $submenu['edit.php'][10][0] = 'Add News';
-    $submenu['edit.php'][16][0] = 'News Tags';
-    echo '';
+  global $menu;
+  global $submenu;
+  $menu[5][0] = 'News';
+  $submenu['edit.php'][5][0] = 'News';
+  $submenu['edit.php'][10][0] = 'Add News';
+  $submenu['edit.php'][16][0] = 'News Tags';
+  echo '';
 }
+
 function img_change_post_object() {
-    global $wp_post_types;
-    $labels = &$wp_post_types['post']->labels;
-    $labels->name = 'News';
-    $labels->singular_name = 'News';
-    $labels->add_new = 'Add News';
-    $labels->add_new_item = 'Add News';
-    $labels->edit_item = 'Edit News';
-    $labels->new_item = 'News';
-    $labels->view_item = 'View News';
-    $labels->search_items = 'Search News';
-    $labels->not_found = 'No News found';
-    $labels->not_found_in_trash = 'No News found in Trash';
-    $labels->all_items = 'All News';
-    $labels->menu_name = 'News';
-    $labels->name_admin_bar = 'News';
+  global $wp_post_types;
+  $labels = &$wp_post_types['post']->labels;
+  $labels->name = 'News';
+  $labels->singular_name = 'News';
+  $labels->add_new = 'Add News';
+  $labels->add_new_item = 'Add News';
+  $labels->edit_item = 'Edit News';
+  $labels->new_item = 'News';
+  $labels->view_item = 'View News';
+  $labels->search_items = 'Search News';
+  $labels->not_found = 'No News found';
+  $labels->not_found_in_trash = 'No News found in Trash';
+  $labels->all_items = 'All News';
+  $labels->menu_name = 'News';
+  $labels->name_admin_bar = 'News';
 }
  
-add_action( 'admin_menu', 'img_change_post_label' );
-add_action( 'init', 'img_change_post_object' );
+add_action('admin_menu', 'img_change_post_label');
+add_action('init', 'img_change_post_object');
 
 // Change Next/Previous links
 add_filter('next_posts_link_attributes', 'posts_link_attributes_next');
@@ -77,10 +78,10 @@ function my_nav_special_class($classes, $item, $args){
 		$args->menu_class = 'site-nav';
 	}
 	$classes[] = $args->menu_class . '__item';
-	
+
 	$classes = str_replace(array('current_page_parent', 'current_page_ancestor'), $args->menu_class . '__item--parent', $classes);
 	$classes = str_replace('current-menu-item', $args->menu_class . '__item--active', $classes);
-	
+
 	return $classes;
 }
 

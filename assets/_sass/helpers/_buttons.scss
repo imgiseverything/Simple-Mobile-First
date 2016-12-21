@@ -1,0 +1,24 @@
+/**
+ * Button helper classes
+ */
+
+.button{
+	background: #bbb;
+	border: 1px solid #bbb;
+	color: #000;
+	clear: both;
+	cursor: pointer;
+	font: normal 100% sans-serif;
+	padding: 10px;
+	text-align: center;
+	width: auto;
+}
+
+	.button:hover{
+		background: #333;
+		color: #fff;
+	}
+
+	.button:active{
+		
+	}

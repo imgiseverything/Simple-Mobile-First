@@ -47,8 +47,7 @@
 }
 
 /* Highlight active page */
-.current_page_item > a,
-.current_menu_item > a{
+.site-nav__item--active > a{
 	background-color: #888;
 	color: $c-white;
 
@@ -58,10 +57,7 @@
 }
 
 /* Highlight active parent */
-.current_page_parent > a,
-.current_page_ancestor > a,
-.current_menu_parent > a,
-.current_menu_ancestor > a{
+.site-nav__item--parent > a{
 	background-color: #aaa;
 
 	&:visited{

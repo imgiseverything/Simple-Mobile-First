@@ -1,0 +1,16 @@
+/**
+ * Links
+ */
+
+// Links without classes = default style
+a{
+	color:$c-link-colour;
+
+	&:visited{
+		color: #800080;
+	}
+	
+	&:hover{
+		text-decoration: none;
+	}
+}

@@ -31,3 +31,4 @@ include('inc/excerpt-and-read-more-links.php');
 include('inc/misc-functions.php');
 include('inc/theme-specific-functions.php');
 include('inc/wysiwyg.php');
+include('inc/turn-off-heartbeat.php');

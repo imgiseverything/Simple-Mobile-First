@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 						'jQuery',
 						'requestAnimationFrame',
 						'throttle',
-						'debug'
+						'debounce'
 					]
 				},
 				options: {
@@ -62,11 +62,18 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Convert Sass to CSS
-		sass: {																 		// Task
-			dist: {														 		// Target
-				files: {													// Dictionary of files
-						'../assets/css/style.css': '../_sass/style.scss'		 // 'destination': 'source'
+		// SASS
+		// Convert Sass into CSS (to make CSS easier to write) 
+		// uses libsass instead of Ruby Sass (for speed - it's upto 5 times faster)
+		sass: {
+			options: {
+				sourceMap: true,
+				outputStyle: 'expanded'
+			},
+			dist: {
+				files: { // 'destination': 'source'
+					'../assets/css/style.css': '../assets/_sass/style.scss',
+					'../editor-style.css': '../assets/_sass/wysiwyg.scss'
 				}
 			}
 		},
@@ -215,7 +222,7 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-concat');

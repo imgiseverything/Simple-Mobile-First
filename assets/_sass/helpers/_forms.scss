@@ -1,4 +1,7 @@
-/* Forms */
+/**
+ * Form helper classes
+ */
+
 form{
 	background: #f5f5f5;
 	margin: 0;
@@ -7,10 +10,6 @@ form{
 
 fieldset{
 	padding: 10px;
-}
-
-legend{
-
 }
 
 label{
@@ -23,7 +22,6 @@ label{
 		cursor: pointer;
 	}
 	
-	
 	label + input[type="checkbox"],
 	label + input[type="radio"],
 	input[type="checkbox"] + label,
@@ -32,6 +30,7 @@ label{
 	}
 
 input, select, textarea{
+	appearance: none;
 	border: 1px solid #dbdbdb;
 	clear: both;
 	color: #666;
@@ -77,36 +76,10 @@ textarea{
 
 button, 
 input[type="button"], 
-input[type="submit"], 
-.button{
-	background: #bbb;
-	border: 1px solid #bbb;
-	color: #000;
-	clear: both;
-	cursor: pointer;
-	font: normal 100% sans-serif;
-	padding: 10px;
-	text-align: center;
-	width: auto;
-}
-
-	button:hover, 
-	input[type="button"]:hover, 
-	input[type="submit"]:hover, 
-	.button:hover{
-		background: #333;
-		color: #fff;
-	}
-	
-	button:active, 
-	input[type="button"]:active, 
-	input[type="submit"]:active, 
-	.button:active{
-		
-	}
-	
-	
-/* Tablet */
-@media screen and (min-width: 768px) {
-	
+input[type="submit"]{
+	appearance: none;
+	background: transparent;
+	border: 1px solid #dbdbdb;
+	border-radius: none;
+	box-shadow: none;
 }
