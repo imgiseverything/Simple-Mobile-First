@@ -177,25 +177,3 @@ function lower_wpseo_metabox($priority) {
 }
 
 add_filter('wpseo_metabox_prio','lower_wpseo_metabox', 10);
-
-/**
- *	convert_wp_pagenavi_html_output
- *	make wp-pagenavi's (which is awesome btw), less than awesome HTML output more awesome
- *	@see http://calebserna.com/bootstrap-wordpress-pagination-wp-pagenavi/
- */
-function convert_wp_pagenavi_html_output($html) {
-	$pagination = '';
-
-	// wrap a's and span's in li's
-	$pagination = str_replace('<div', '', $html);
-	$pagination = str_replace("class='wp-pagenavi'>", '', $pagination);
-	$pagination = str_replace('<a', '<li><a', $pagination);
-	$pagination = str_replace('</a>', '</a></li>', $pagination);
-	$pagination = str_replace('<span', '<li><span', $pagination);
-	$pagination = str_replace('</span>', '</span></li>', $pagination);
-	$pagination = str_replace('</div>', '', $pagination);
-
-	return '<ul class="pagination">' . $pagination . '</ul>';
-}
-
-add_filter('wp_pagenavi', 'convert_wp_pagenavi_html_output', 10, 2);
